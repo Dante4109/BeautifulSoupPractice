@@ -1,3 +1,4 @@
+Source 1 
 http://www.armedicalboard.org/public/verify/default.aspx
 
 1. The website at first glance is using default.aspx as its ending suffix. Default.aspx in ASP.NET
@@ -32,14 +33,43 @@ also confirmed ASMB starts at index 0
 https://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB0
 
 
+
+Source 2
 https://doh.force.com/ver/s/
 
 1. The search page for this site is a spa (single page application). It's fairly plain so most likely it was made with an older
 JS framework. When searching for data it is returned via a json call. The provided example when applied to the search box makes a js call but the address Board
 does not change. 
 
-2.
 
+
+Localstorage only contains two variables. They don't seem necessary to get the data 
+
+
+
+2. The requested data is returned as json. One important note though is that the search results are 
+using server side pagination. This means a new web request is made each time a page request is made. 
+
+https://doh.force.com/ver/s/sfsites/aura?r=15&other.SearchComponent.searchRemainingRecords=1 page 1
+https://doh.force.com/ver/s/sfsites/aura?r=16&other.SearchComponent.searchRemainingRecords=1 page 2
+
+Pages are oddly not consistent with the page number chosen from the bar below the search results table. 
+
+
+
+Test to get Example record via Rest Client 
+
+url post https://doh.force.com/ver/s/sfsites/aura?r=23&other.SearchComponent.searchRemainingRecords=1
+
+message {"actions":[{"id":"226;a","descriptor":"apex://SearchComponentController/ACTION$searchRecordsCount","callingDescriptor":"markup://c:SearchComponent","params":{"Profession":"0","LicenseType":"PHYSICAL THERAPIST","FirstName":"","LastName":"","LicenseNumber":"PT870060","SSN":"","Status":"0"}},{"id":"227;a","descriptor":"apex://SearchComponentController/ACTION$searchRecords","callingDescriptor":"markup://c:SearchComponent","params":{"Profession":"0","LicenseType":"PHYSICAL THERAPIST","FirstName":"","LastName":"","LicenseNumber":"PT870060","SSN":"","Status":"0"}}]}
+aura.context {"mode":"PROD","fwuid":"AE898lCB2KpCUerBipCwXg","app":"siteforce:communityApp","loaded":{"APPLICATION@markup://siteforce:communityApp":"sVZ6cnpPX79_SIZb4Z-5KQ"},"dn":[],"globals":{},"uad":false}
+aura.token undefined 
+
+response 200 
+
+
+
+Source 3
 https://techmedweb.omb.state.or.us/search
 
 1. Website opens a new window upon entry into the search bar. Network tab reveals licennsee-search using angular.js. So this newer site is angular. 
@@ -85,9 +115,18 @@ Old search page is most likely aspn.net. I won't be using that if I can help it.
 
 2.
 
+
+Source 4: 
 https://www.pals.pa.gov/#/page/search
 
-1. This is genuine spa. All data is being rendered on the client side via ajax calls to a backend api. The search navigation is dynamic and sends a payload
-on search. The frontend is most likely a newer jamstack framework like react or vue. 
+1. This is genuine spa. All data is being rendered on the client side via ajax calls to a backend api. The search navigation is dynamic 
+and sends a payload on search. The frontend is most likely a newer jamstack framework like react or vue. 
 
-2. I was easily able to retrieve data via their api backendend and a rest client. The client is relying on a public token to obtain data and is not using application/session storage for much. 
+2. I was easily able to retrieve data via their api backendend and a rest client. The client is relying on a 
+public token to obtain data and is not using application/session storage for much. 
+
+Data is ruturned entirely in one call. Pagination is taking place on the client side rather than the server side as is the case for example 2. 
+
+https://www.pals.pa.gov/api/Search/SearchForPersonOrFacilty
+
+{"OptPersonFacility":"Person","ProfessionID":8,"LicenseTypeId":383,"LicenseNumber":"","State":"","Country":"ALL","County":null,"IsFacility":0,"PersonId":null,"PageNo":1}
