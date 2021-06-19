@@ -1,0 +1,40 @@
+.DS_Store
+node_modules
+db.sqlite3
+/dist
+/test_data
+/test data
+/venv
+__pycache__
+
+# local env files
+.env.local
+.env.*.local
+.env
+.venv
+.venv.local
+.venv.*.local
+local.py
+package-lock.json
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+test_data
+test data
+api/media
+media
+mediafiles_cdn
+api/static
+test data
+# Django files

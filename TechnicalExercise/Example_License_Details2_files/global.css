@@ -1,0 +1,281 @@
+﻿@-ms-viewport     { width: device-width; }
+@-o-viewport      { width: device-width; }
+@viewport         { width: device-width; }
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+/*Responsive frame for mobile first approach*/
+
+body{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    margin: 0 auto;
+    width: 95%;
+}
+.row {
+        margin: 0 auto;
+    }
+.small {
+    font-size: 95%;
+    position: relative;
+    top: .4em;
+}
+main{
+    height: auto;
+}
+main.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+ .public{background-color: #4F1434;}
+ .practitioner{background-color: #444B72;}
+ .about{background-color: #1B2245;}
+ .publicfont { color: #4F1434;}
+ .practitionerfont{ color: #444B72;}
+ .aboutfont{ color: #1B2245;}
+ .boldpublicfont{ color:#4F1434; font-weight:600;}
+#masthead{
+    background-color: #474747;
+    width: 100%;
+    }
+
+ul li{
+    list-style: none;
+}
+
+#masthead h1 {
+    color: #e0e3e5;
+    text-shadow: 2px 1px 1px #4f1434;
+    display: inline-block;
+    padding: 0 .8em;
+    padding-top: .8em;
+    margin: 0;
+    font-size: 1.125em;
+}
+
+#masthead img{
+    display: none;
+    min-height: 150px;
+    min-width: 150px;
+}
+
+
+.search-column, .icon-search {
+    padding-bottom: .8em;
+}
+
+
+/*
+.icon-search input {
+    border-radius: 2em;
+}*/
+
+/*==========Navigation=========*/
+nav {
+    margin-left: -2.5em;
+}
+nav #mastnav {
+    -webkit-padding-start: 0px;
+    margin-left: -2.5em;
+    width: 100%;
+ }
+
+#mastnav ul{
+    -webkit-padding-start: 0px;
+    width: 100%;
+}
+
+#mastnav ul li{
+    height: 30px;
+    width: 100%;
+    display: block;
+}
+
+#mastnav ul li:hover{
+    opacity: 0.6;
+}
+
+#mastnav a {
+    color: #ffffff;
+    display: block;
+    width: 95%;
+    text-align: center;
+    padding-top: .3em;
+    font-weight: 600;
+    font-size: 120%;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+/*=================Main Footer=============*/
+
+#mastfooter{
+    color: #ffffff;
+    background-color: #474747;
+    }
+#mastfooter.container {
+    float: left;
+}
+#mainfooter {
+    padding-top: 1em;
+    margin-bottom: 0;
+}
+#mastfooter ul li {
+    padding: .2em;
+}
+#mastfooter ul li a{
+    color: #e0e3e5;
+   
+}
+#mastfooter ul li a:hover{
+    color: #ffffff;
+     }
+
+#norton {
+    color: gold;
+    font-size: 1em;
+    }
+/*===========end of Main Footer============*/
+
+@media only screen and (min-width : 460px){
+    #masthead {
+        width: 100%;
+    }
+    #masthead h1 {
+        font-size: 1.5em;
+    }
+   
+}
+
+@media only screen and (min-width : 782px) {
+    .container {
+        width: 98%;
+    }
+
+    #masthead h1 {
+        font-size: 1.735em;
+        position: relative;
+        top: -1.275em;
+    }
+
+    #masthead img {
+        width: 7%;
+        display: inline-block;
+        padding: .8em 0;
+        margin-top: .8em;
+    }
+   
+    .search-column, .icon-search {
+        display: inline-block;
+        float: right;
+        position: relative;
+        top: 2.25em;
+    }
+    /*==========Navigation=========*/
+
+    #mastnav ul li {
+        height: 60px;
+        display: inline-block;
+        float: left;
+        margin: 0;
+        width: 33.333%;
+    }
+
+    #mastnav a {
+        padding-top: .6em;
+        font-size: 140%;
+        font-weight: 600;
+    }
+    /*============Footer=============*/
+    #mastfooter{
+        height: 250px;
+    }
+    #mainfooter {
+        float: left;
+        clear: left;
+        margin: .8em;
+    }
+    #mastfooter ul li:hover {
+        border-bottom-style: solid;
+        border-bottom-color: #4f1434;
+        border-bottom-width: thick;
+    }
+    #norton {
+    clear: both;
+    float: right;
+    padding-right: 4em;
+    padding-bottom: 2em;
+    }
+}
+
+@media only screen and (min-width : 992px) {
+    .container {
+        width: 97%;
+    }
+    .container #copyright{
+        float: left; 
+    }
+     #masthead h1 {
+        font-size: 2em;
+        top: -.8em;
+    }
+    #masthead img {
+        max-width: 5%;
+    }
+    .search-column, .icon-search {
+       top: 2.5em;
+    }
+/*==========Navigation=========*/
+    
+    #mastnav ul li{
+    height: 80px;
+    }
+     #mastnav a {
+    padding-top: 1.225em;
+    
+    }
+/*============Footer============*/
+    #mastfooter {
+        height: 170px;
+    }
+     #mastfooter ul li {
+    display: inline;
+    padding: .8em;
+    }
+}
+        
+
+@media only screen and (min-width : 1280px) {
+    #mastfooter{
+        height: 250px;
+    }
+   .xl{
+       font-size: 105%;
+       position: relative;
+       top: .4em;
+    }
+   .container {
+    width: 90%;
+    }
+   #masthead h1 {
+        font-size: 2.5em;
+        top: -1em;
+        }
+   .search-column, .icon-search {
+       top: 3em;
+        }
+     #mastnav a {
+        padding-top: .8em;
+        font-size: 180%;
+        }
+     #masthead img {
+         max-width: 5%;
+         padding-top: 0;
+     }
+}

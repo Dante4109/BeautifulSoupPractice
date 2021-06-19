@@ -1,0 +1,390 @@
+﻿/*Mission Div*/
+section {
+    background-color: #E0E3E5;
+}
+
+/*Main Content*/
+main{
+    margin-top: 1em;
+    
+}
+/*.asmbaside{
+    display: none;
+   
+}*/
+.center-block{
+    display:block;
+    margin-right:auto;
+    margin-left:auto
+
+}
+.left{
+    float: right;
+    margin-top: 0;
+    margin-right: .4em;
+    margin-bottom: .2em;
+}
+.indent {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+div.portalcontainer {
+    margin-bottom: 2em;
+}
+.portalcontainer{
+    -webkit-padding-start: 0px;
+    background-color: #E0E3E5;
+    width: 98%;
+    padding: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    height: 28.563em;
+ }
+.portalcontainer.practitionertypecontainer{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+ }
+.portalcontainer.generalInformation {
+    height: auto;
+    padding-bottom: 1em;
+   }
+.portalcontainer.asmbaside {
+    height: 80em;
+ }
+.portalcontainer.asmbaside h3 {
+        padding: 0 .8em;
+        padding-top: .8em;
+        font-variant: small-caps;
+        margin: 0;
+        text-align: center;
+ }
+.generalInformation h3{
+    color: #444B72;
+    padding: 0 .8em;
+    padding-top: .4em;
+    margin: 0;
+}
+.asmbaside img {
+    max-width: 44px;
+    padding-left: 1.5em;
+    padding-top: .8em;
+}
+.asmbaside .announcement {
+    padding-left: 1.5em;
+   
+}
+.asmbaside a.traditional {
+    float: left;
+    padding-left: 1.5em;
+    font-size: 1em;
+    text-decoration: underline;
+    color: #4F1434;
+    width: 100%;
+}
+.asmbaside a:hover.traditional {
+    color: #444B72;
+}
+#scheduledMeetings{
+    padding-left: 1.5em;
+}
+#scheduledMeetings h4{
+    margin: .2em 0;
+    padding-top: .8em;
+}
+.newsDate {
+    position: relative;
+    top: -.5em;
+}
+#scheduledMeetings a.agenda {
+    float: left;
+    font-weight:600;
+    color:#4F1434;
+    text-decoration: underline;
+    font-size: 1em;
+}
+#scheduledMeetings a:hover.agenda {
+    color: #444B72;
+}
+.portalcontainer h2{
+    color: #ffffff;
+    padding: .8em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    margin-top: 0;
+    font-size: 1.15em;
+ }
+
+.portalcontainer p{
+    padding: 0 .8em;
+    line-height: 1.2em; 
+}
+.portalcontainer a {
+       padding: .4em;
+       float: right;
+   }
+.portalcontainer a.pull-right {
+    padding: .5em 1.5em;
+    color: #444B72;
+    font-weight: 600;
+}
+.portalcontainer a:hover.pull-right {
+    color: #4f1434;
+}
+main.container div.row{
+    margin-left: auto;
+    margin-right: auto;
+}
+.portalcontainer .generalInformation h3{
+    color: #444B72;
+    padding: .2em .8em;
+}
+/*PortalContainers Forms*/
+.containerform{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    clear: both;
+}
+
+.form-group {
+    padding-bottom: .6em;
+}
+
+
+.btnHome {
+    display:block;
+	padding: 6px 12px;
+    margin:15px auto 0 auto;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: left;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-image: none;
+    background-color:#609040;
+	border:1px solid transparent;
+	border-radius:4px;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+    float:right;
+    width:110px;
+    text-decoration:underline;
+    color:yellow;
+}
+
+.btnHome:active:focus,.btnHome:focus{
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px
+	}
+
+.btnHome:focus,.btnHome:hover{
+	color: white;
+	text-decoration: none
+}
+
+.btnHome:active{
+	background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+}
+
+
+
+
+
+
+
+
+/*=======================Form Buttons===============*/
+.btn{
+    color: yellow; 
+	display: block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-image: none;
+    background-color:#609040;
+	border:1px solid transparent;
+	border-radius:4px;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	}
+.btnMCRenewal {
+    width: 80%;
+    float: none;
+    color: yellow;
+    font-size: 14px;
+}
+.portalcontainer a.btnMCRenewal{
+    float: none;
+    font-size: 1em;
+   }
+.btn:active:focus,.btn:focus{
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px
+	}
+
+.btn:focus,.btn:hover, .btnMCRenewal:hover{
+	color: #90c070;
+	text-decoration: none
+}
+
+.btn:active{
+	background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+}
+
+@media only screen and (min-width : 460px) {
+    .portalcontainer{
+        width: 90%;
+    }
+    .portalcontainer p{
+    padding: 0 1.5em;
+    
+}
+}
+/*display for tablet and landscape to adjust width of the containers*/
+@media only screen and (min-width : 620px) {
+    .portalcontainer{
+        width: 75%;
+
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 782px) {
+    .clearnav {
+        margin-top: 80px;
+    }
+
+    .portalcontainer.asmbaside {
+        width: 30%;
+        height: 90em;
+    }
+
+    .portalcontainer.generalInformation {
+        width: 64%;
+        height: 461px;
+    }
+
+    .portalcontainer {
+        width: 30%;
+        float: left;
+        margin: 0 0.6em;
+    }
+
+        .portalcontainer.practitionertypecontainer {
+            width: 30%;
+        }
+
+    .portals {
+        padding-left: .5%;
+    }
+
+    .practitionerTypeContainer {
+        padding-left: 1%;
+    }
+
+    .lgcoloffset-5 {
+        margin-left: 3.333%;
+    }
+    /*.smcoloffset-5{margin-left: 4.973em}*/
+    .portalcontainer h2 {
+        font-size: 118%;
+    }
+
+    .asmbaside {
+        display: block;
+    }
+
+    .portalcontainer a {
+        font-size: 12px;
+        /*padding: 1.5em;*/
+    }
+
+    .portalcontainer p {
+        padding: 0 .8em;
+    }
+}
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .clearnav{
+    margin-top:100px;
+    }
+    .asmbaside img {
+        max-width: 54px;
+    }
+    .portals{
+       padding-left: 2.5%;
+     }
+    .practitionerTypeContainer{
+        padding-left: 2.5%;
+    }
+        .portalcontainer p {
+        padding: 0 1.5em;
+    }
+        .portalcontainer a.pull-right {
+    padding: 1em 1.5em;
+   
+}
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1280px) {
+    .practitionerTypeContainer{
+        padding-left: 3%;
+    }
+    .lgcoloffset-5{
+        margin-left: 3.333%;
+    }
+    .asmbaside span{
+        font-size: 145%;
+    }
+    .asmbaside img {
+        max-width: 64px;
+    }
+    
+    .portalcontainer{
+        width: 31.333%;
+        float: left;
+        margin: 0 0.625em; 
+    }
+    .portalcontainer h3{
+        font-size: 145%;
+    }
+    .portalcontainer h2{
+         font-size: 155%;
+    }
+    .portalcontainer a{
+        font-size: 14px;
+    }
+    .portalcontainer a.pull-right {
+    padding: .5em 1.5em;
+   
+}
+}

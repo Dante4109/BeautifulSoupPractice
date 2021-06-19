@@ -1,0 +1,269 @@
+﻿/*consistency fixes compiled from many known techniques to unify the rendering of cross browser styles and fallbacks, must attribute trailblazer: Nicolas Gallagher :) */
+
+/*corrects text resizing oddly in IE6/7 when body font-size is set using em units, prevents iOS text size adjust after orientation change, without disabling the user zoom*/
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+}
+/*addresses margins handled incorrectly in IE6/7*/
+body {
+    margin: 0
+}
+/*============================================================================*/
+/*HTML5 display definitions, corrects block display not defined in IE6/7/8/9 & FF3*/
+article, aside, footer, header, section, nav, main, menu, hgroup, figcaption, figure, summary {
+    display: block;
+}
+/*corrects inline-block display not defined in IE6/7/8/9 & FF3*/
+audio, video, canvas {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+summary {
+    display: list-item;
+}
+/*addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4, known issue in IE6*/
+[hidden] {
+    display: none;
+}
+/*custom clearfix--kjOlsen*/
+.clearfix {
+    overflow: auto;
+    zoom: 1;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+    clear: both;
+}
+/*addresses readability with links on all browsers */
+a {
+    background-color: none;
+    text-decoration: none;
+}
+a:hover, a:active, a:focus {
+    outline: 0;
+}
+/*improves scalabilty, removes border when inside 'a' element in IE6/7/8/9, FF3*/
+img{
+    outline: none;
+    max-width: 100%;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+/*corrects overflow display oddly in IE9*/
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/*addresses font sizes and margins set differently in IE6/7, FF4+, Chrome, S5*/
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.75em;
+    margin: 2.33em 0;
+}
+
+/*prevents sub and sup affecting line-height in all browsers*/
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+/* addresses margins set differently in IE6/7*/
+dl, menu, ol, ul{
+    margin: 1em 0;
+}
+dd{
+    margin: 0 0 0 40px;
+}
+/*addresses paddings set differently in IE6/7*/
+menu, ol, ul {
+    padding: 0 0 0 40px;
+}
+nav ol, nav ul {
+    list-style: none;
+    list-style-image: none;
+}
+/*corrects margin displayed oddly in IE6/7*/
+form {
+    margin: 0;
+}
+/*define consistent border, margin, and padding in forms*/
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.65em 0.75em;
+}
+legend {
+    border: 0;
+    padding: 0;
+    white-space: normal;
+    *margin-left: -7px;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline; 
+    vertical-align: middle;
+}
+button, input {
+    line-height: normal;
+}
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    *overflow: visible;
+}
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px;
+}
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /*box-sizing set to border-box*/
+    box-sizing: content-box;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input[type=search] {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    input[type=checkbox],
+    input[type=radio] {
+        margin: 4px 0 0;
+        margin-top: 1px\9;
+        line-height: normal;
+    }
+
+    input[type=file] {
+        display: block;
+    }
+
+    input[type=range] {
+        display: block;
+        width: 100%;
+    }
+
+    select[multiple],
+    select[size] {
+        height: auto;
+    }
+
+    input[type=file]:focus,
+    input[type=checkbox]:focus,
+    input[type=radio]:focus {
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
+
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+
+        .form-control:focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .form-control::-moz-placeholder {
+            color: #999;
+            opacity: 1;
+        }
+
+        .form-control:-ms-input-placeholder {
+            color: #999;
+        }
+
+        .form-control::-webkit-input-placeholder {
+            color: #999;
+        }
+
+        .form-control::-ms-expand {
+            background-color: transparent;
+            border: 0;
+        }
+
+        .form-control[disabled],
+        .form-control[readonly],
+        fieldset[disabled] .form-control {
+            background-color: #eee;
+            opacity: 1;
+        }
+
+        .form-control[disabled],
+        fieldset[disabled] .form-control {
+            cursor: not-allowed;
+        }
+
+    textarea.form-control {
+        height: auto;
+    }
+
+    input[type=search] {
+        -webkit-appearance: none;
+
+
+    }

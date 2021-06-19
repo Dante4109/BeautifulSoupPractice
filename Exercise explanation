@@ -1,0 +1,52 @@
+http://www.armedicalboard.org/public/verify/default.aspx
+
+1. The website at first glance is using default.aspx as its ending suffix. Default.aspx in ASP.NET
+web application is the default startup page if we do not specify the page
+in URL. This tells me the page is most likely using webforms or MVC. Either way its an asp.net site. I can expect a C# backend at the very least. 
+Most likely server side rendering. It's also not using HTTPs so I know its even older and leads me towawrds webforms. This also means the site isn't secure and isn't using signed certificates. 
+The data being sent from the server to the client is not encrypted via TLS/SSL. Granted there is a SSL certificates about at the footer so perhaps it just expired. 
+
+The search call revealed the following request url in the chrome developer tools network tab. http://www.armedicalboard.org/Public/verify/lookup.aspx?LicNum=PA-340 
+Example Record PA-340 - Frank Jay Smith, PA
+
+Attempted wilcard search but that wasn't supported. 
+
+No response data is visible meaning this is not using a separate api and is a tightly coupled webapp as most webforms apps are. 
+The url request will take you straight to the webpage where the data is rendered. The url will however redirect to a url using a different ID to identify the searched provider. 
+
+http://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB18409 = PA-340
+http://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB23602 = PA-341
+
+http://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB23602
+
+The search criteria uses ASMB**** as the true ID to check for practioners. 
+
+ASMB = Arkansas State Medical Board
+
+2. At a glance there's effectively two optional searh criteria we can use. One is the prefix presented for PA aka license number. 
+The other option is the actual true ID that the site redirects to ASMB****
+I chose to use the ASMB request url to bypass the issue with the redirect. Alternatiavely I could use web driver 
+but that would be more resource intensive and expensive. 
+
+also confirmed ASMB starts at index 0
+https://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB0
+
+
+https://doh.force.com/ver/s/
+
+1. The search page for this site is a spa (single page application). It's fairly plain so most likely it was made with an older
+JS framework. When searching for data it is returned via a json call. The provided example when applied to the search box 
+
+2.
+
+https://techmedweb.omb.state.or.us/search
+
+1.
+
+2.
+
+https://www.pals.pa.gov/#/page/search
+
+1.
+
+2.
