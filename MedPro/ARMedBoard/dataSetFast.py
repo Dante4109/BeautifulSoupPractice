@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 from lxml import etree
-import requests
 
 
 class DataSet:
@@ -41,8 +40,8 @@ class DataSet:
         self.BoardOrders = BoardOrders
 
 
-def getDataSetFromUrl(url):
-    webpage = requests.get(url).text
+def getDataSetFromUrl(url, requests_session):
+    webpage = requests_session.get(url).text
     soup = BeautifulSoup(webpage, "lxml")
     dom = etree.HTML(str(soup))
 
