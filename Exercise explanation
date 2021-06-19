@@ -35,18 +35,59 @@ https://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB0
 https://doh.force.com/ver/s/
 
 1. The search page for this site is a spa (single page application). It's fairly plain so most likely it was made with an older
-JS framework. When searching for data it is returned via a json call. The provided example when applied to the search box 
+JS framework. When searching for data it is returned via a json call. The provided example when applied to the search box makes a js call but the address Board
+does not change. 
 
 2.
 
 https://techmedweb.omb.state.or.us/search
 
-1.
+1. Website opens a new window upon entry into the search bar. Network tab reveals licennsee-search using angular.js. So this newer site is angular. 
+
+While a new page is opened the actual request reponse still comes in as json which means that page redirect doesn't matter when it comes to scraping. 
+
+The search criteria under Licensee Search is effectively building out a json object depending on what is chosen and sending that as a request.
+The best way to get this data is to mimic this process with the scraper. We will also keep in mind a public token is being sent. 
+
+
+
+Local storage stores information for a user upon site entry without needing a login. Most relevant is the _grcaptcha
+
+
+09AEMli-NuMgxxX1LWnwNMtBBtJgVlpl41nz_75JAwuJ0GFcwPsTXpwYPcZcAWjHSVJf6-Qepf73WFDVS5jTSQ0Xo
+
+Search example 
+
+https://techmedweb.omb.state.or.us/api/licensee-search
+
+{distance: "5", nameMatch: "Exact", address: "All", licenseNumber: "DP00246", pagenumber: 1,…}
+address: "All"
+distance: "5"
+licenseNumber: "DP00246"
+nameMatch: "Exact"
+pagenumber: 1
+token: "03AGdBq249qX-XUhA3VJckI6uXQ8edz3JH_N8Q5WyHZllmvDOIMQEuyyBnRA8OAftCPkyEVSNYpblC6-knyCMzN1tU989qSb732CuxEk2dDQf_
+iNlsSP-Z_nIn5GNQdQy-umMIaNSwuXk2KCKDjiM1QRf4Mj92X3trWyxC0iSUwjC4_4zkEHIMIEnZMGrAt6SJCQOQPWgCzzVxFQiQZwL3Wxf35cR372YHGq
+rDPZYOMVRJImkviShBKPWQwQ4IWksVh3xpuNcp2pI5HJuOhisgS9Tk66g2j_6X3-NmhW779nnFMXcGZrOyfI-f99-HMKySpKxkQtQ1MJxOmoo_OQKODDZmU
+7otLmWJFSlAWS63AUVtj2kEmhIeVBAEXwdPlBIncOZlAv_m60XjWQYY4UPDCWkK3A6SJkOcFKaRwX94_X2A45aSWrGSJku1ULHAkutjI1gkWHOXmcnf_U2sq
+J2cXz_nZkujQzeBpmTt5U7fywOSFrpWYRvlfOKj_Bn7-w_3Zlq2biGF8VZJG1Zer90BdkkA6s8HHCxdBR2U3gpiysTzQa2BpfEYfAA"
+
+Testing in rest client returns 400
+
+{
+  "Message": "Error validating you are human, please try again."
+}
+
+
+
+
+Old search page is most likely aspn.net. I won't be using that if I can help it. 
 
 2.
 
 https://www.pals.pa.gov/#/page/search
 
-1.
+1. This is genuine spa. All data is being rendered on the client side via ajax calls to a backend api. The search navigation is dynamic and sends a payload
+on search. The frontend is most likely a newer jamstack framework like react or vue. 
 
-2.
+2. I was easily able to retrieve data via their api backendend and a rest client. The client is relying on a public token to obtain data and is not using application/session storage for much. 
