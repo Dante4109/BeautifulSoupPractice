@@ -1,0 +1,33 @@
+AR Board Med Steps
+Get list of all possible urls
+Use status code 200 to determine if the page exists. 
+
+Check if board member exists via returned results 
+
+No Board Minutes on file for this licensee.
+No Board Orders on file for this licensee.
+
+Get count of urls 
+
+Basic Solution: 
+Create list of webpages based on urls 
+
+Iterate through each webpage and find all licenses with PA prefix 
+If found append to list of PA-Prefixes
+
+
+Create method for displaying licenser info in print
+Create export method for PA-licenses to csv 
+
+
+Enhanced Solution: 
+Create list of webpages based on urls 
+Sort Webpages first and create a new list with just the PA-prefix
+
+Choose best sorting method based on common practice for the data set type and track space / time complexity. 
+
+User already created display method for licenser info
+Use already created display method to export to csv
+
+
+
