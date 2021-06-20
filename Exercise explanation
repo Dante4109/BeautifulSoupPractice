@@ -54,8 +54,7 @@ https://doh.force.com/ver/s/sfsites/aura?r=15&other.SearchComponent.searchRemain
 https://doh.force.com/ver/s/sfsites/aura?r=16&other.SearchComponent.searchRemainingRecords=1 page 2
 
 Pages are oddly not consistent with the page number chosen from the bar below the search results table. 
-
-
+The r must represent request number from that ip. Possibly used for rate limiting. 
 
 Test to get Example record via Rest Client 
 
@@ -68,6 +67,14 @@ aura.token undefined
 response 200 
 
 
+Altering the request to include all PHYSICAL THERAPIST practioners returns 25 results per page in a table. 
+{"actions":[{"id":"233;a","descriptor":"apex://SearchComponentController/ACTION$searchRecordsCount","callingDescriptor":"markup://c:SearchComponent","params":{"Profession":"0","LicenseType":"PHYSICAL THERAPIST","FirstName":"","LastName":"","LicenseNumber":"","SSN":"","Status":"0"}},{"id":"234;a","descriptor":"apex://SearchComponentController/ACTION$searchRecords","callingDescriptor":"markup://c:SearchComponent","params":{"Profession":"0","LicenseType":"PHYSICAL THERAPIST","FirstName":"","LastName":"","LicenseNumber":"","SSN":"","Status":"0"}}]}
+
+The webapp page selector is broken at 82 and beyond. The api however still works to the end. 
+A simple loop can confirm how many pages can actually be hit. 
+Once a bad page is hit we can break the loop. This can be built into the script. 
+
+Identified pagination marker for the api in the message 
 
 Source 3
 https://techmedweb.omb.state.or.us/search
@@ -80,9 +87,9 @@ The search criteria under Licensee Search is effectively building out a json obj
 The best way to get this data is to mimic this process with the scraper. We will also keep in mind a public token is being sent. 
 
 
-
 Local storage stores information for a user upon site entry without needing a login. Most relevant is the _grcaptcha
 
+cookie data in request header also shows me its ASP.net via a session id 
 
 09AEMli-NuMgxxX1LWnwNMtBBtJgVlpl41nz_75JAwuJ0GFcwPsTXpwYPcZcAWjHSVJf6-Qepf73WFDVS5jTSQ0Xo
 
@@ -122,11 +129,23 @@ https://www.pals.pa.gov/#/page/search
 1. This is genuine spa. All data is being rendered on the client side via ajax calls to a backend api. The search navigation is dynamic 
 and sends a payload on search. The frontend is most likely a newer jamstack framework like react or vue. 
 
-2. I was easily able to retrieve data via their api backendend and a rest client. The client is relying on a 
-public token to obtain data and is not using application/session storage for much. 
+2. I was easily able to retrieve data via their api backendend and a rest client. The client is not relying on a 
+public token to authetnicate calls and is not using application/session storage for much. 
 
-Data is ruturned entirely in one call. Pagination is taking place on the client side rather than the server side as is the case for example 2. 
+Pagination is taking place on the client side and server side rather than just the server side as is the case for example 2. 
+The nest page button is also broken but this doesn't affect the api. 
 
 https://www.pals.pa.gov/api/Search/SearchForPersonOrFacilty
 
 {"OptPersonFacility":"Person","ProfessionID":8,"LicenseTypeId":383,"LicenseNumber":"","State":"","Country":"ALL","County":null,"IsFacility":0,"PersonId":null,"PageNo":1}
+
+The PageNo is much more striaght forward in json form requst for this api. 
+
+Searching in the GUI for State Board of Pharmacy + Pharmacist returned 9942 results 
+
+50 results are returned per json call. 9942/50 = 198.84
+199 pages are needed to get the entire data set for this specific criteria.
+page 200 returns nothing but still returns a 200. Using status codes won't work to test this. 
+
+
+

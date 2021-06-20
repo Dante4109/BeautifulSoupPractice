@@ -1,10 +1,10 @@
-from urlList import getAllUrlsBasedOnLicenseType
-from dataSet import getDataSetFromUrl
+from urlListFast import getAllUrlsBasedOnLicenseType
+from dataSetFast import getDataSetFromUrl
 from exportCSV import writeExampleCSV, exportDicAsCSV
 import requests
 
 base_url = (
-    "http://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB")
+    "https://www.pals.pa.gov/api/Search/SearchForPersonOrFacilty")
 
 license_type = "PA"
 dataSetList = list()
