@@ -76,6 +76,7 @@ Once a bad page is hit we can break the loop. This can be built into the script.
 
 Identified pagination marker for the api in the message 
 
+
 Source 3
 https://techmedweb.omb.state.or.us/search
 
@@ -115,10 +116,20 @@ Testing in rest client returns 400
   "Message": "Error validating you are human, please try again."
 }
 
+protected by reCAPTCHA is mostly likely preventing any possible webscraping 
 
+Used Selenium with python to simulate browser to grab data. 
+Note: Needed to directly call js function directly assoicated with the element via JS injection. 
+This is a known caveat with angular sites using ng-show. 
 
+The data is returned as json but only pulls 10 results per page 
+There is a download option for csv but its always only the first 100 results. 
+Its not useful. 
 
 Old search page is most likely aspn.net. I won't be using that if I can help it. 
+
+
+
 
 2.
 

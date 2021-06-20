@@ -1,0 +1,12 @@
+page 1 expath 
+    /html/body/div[1]/div/alx-search/div/div[5]/div/alx-results/nav/ul/li[2]/a
+
+    page 2 expath
+    / html / body / div[1] / div / alx - search / div / div[5] / div / alx - results / nav / ul / li[3] / a
+    
+    page 3 expath
+    / html / body / div[1] / div / alx - search / div / div[5] / div / alx - results / nav / ul / li[4] / a
+    
+ xpath = next button 
+/html/body/div[1]/div/alx-search/div/div[5]/div/alx-results/nav/ul/li[12]/a
+
