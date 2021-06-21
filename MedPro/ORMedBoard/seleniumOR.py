@@ -12,7 +12,7 @@ import time
 def getLicenseDataFromOR():
     options = webdriver.ChromeOptions()
     options.add_experimental_option("detach", True)
-    options.add_argument('--headless')
+    """ options.add_argument('--headless') """
     options.add_argument('--no-sandbox')
     options.add_argument('--ignore-certificate-errors-spki-list')
     options.add_argument('--ignore-ssl-errors')
