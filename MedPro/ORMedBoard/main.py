@@ -1,3 +1,8 @@
-from seleniumTest import seleniumTestChrome
+from seleniumOR import getLicenseDataFromOR
 
-seleniumTestChrome()
+dataSetList = getLicenseDataFromOR()
+print("We are in Main again")
+print(dataSetList)
+for data in dataSetList:
+    print(data)
+    print("-------------")

@@ -9,17 +9,20 @@ import json
 import time
 
 
-def seleniumTestChrome():
+def getLicenseDataFromOR():
     options = webdriver.ChromeOptions()
     options.add_experimental_option("detach", True)
-    """ options.add_argument('--headless') """
+    options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--ignore-certificate-errors-spki-list')
     options.add_argument('--ignore-ssl-errors')
-    webdriver_path = 'F:/Programs/Python/BeautifulSoupPractice/chromedriver_win32/chromedriver.exe'
-    driver = webdriver.Chrome(options=options, executable_path=webdriver_path)
-
-    starting_pagexpath_index = 2
+    webdriver_path = (
+        'F:/Programs/Python/BeautifulSoupPractice/chromedriver_win32/chromedriver.exe')
+    dataSetList = list()
+    results = 30
+    results_per_page = 10
+    page_count = 1
+    page_xpath_num = 2  # This is actually page 1 button starting
 
     # xpaths
     more_options = '/html/body/div[1]/div/alx-search/div/div[2]/div[1]/div/alx-form/form/div[3]/div[1]/button'
@@ -31,6 +34,8 @@ def seleniumTestChrome():
 
     post_url = 'https://techmedweb.omb.state.or.us/api/licensee-search'
     data = {"distance": "5", "nameMatch": "Exact", "address": "All", "pagenumber": 1, "token": "03AGdBq24aFbrydUeiHxp8pPq4ZRz0rSf070XVmLL_yDfdLVZqhkbVjk4QLzV3hnPDuayhxYGkXsvxqNHrynWbOYEmnQtciW6VFkp6UMvhtER8YwPVEUxvzpAqBWA9M9Dk_CiTU150SrG7yYhqz-CViQp7NrQXmfDz4V7behUfdQSmckioO1aL0WTOrAuru1cCu60RsYzW_QEl64__xi144zyagyz1NwjZsk6H54Y0WgASyEr-l7KjxXbcICEyr502TQAxLcjev-6obfb--mJmDr-4_xZw0f2jLkOJwOl1415DlF08BPJbgzDgdw0k5CiMDT5uLDv0OUyYBxvnNBwgbwsbc4gBY4tAtGVkh-0DnoZ_Ajd2x6jxNWa6Ngo7B57jpMkn-kryDSuYhp9OjyYgSD7Vs23SWNY7rsvZIMPInSxFDJdj0Clib5b1zhYhVzw06D6N7LyhBue2Z8L85lHn-3Pw9AOcxmV4q11PjAFaLfSwTx9OGjCfxThPapHbXrfwJLcGGuCEo4W2OOFMTQ8Rq2XwmPbCn5zx5w", "license": "Podiatrist"}
+
+    driver = webdriver.Chrome(options=options, executable_path=webdriver_path)
     driver.get(web_url)
     """ cookies = driver.get_cookies()
     print(cookies)
@@ -56,37 +61,44 @@ def seleniumTestChrome():
     """ script = "alert('Alert via selenium')"
     driver.execute_script(script) """
     # You are now at page 1
+    max_page_count = getMaxPageCount(results, results_per_page)
+    print(max_page_count)
+    # check return results
+    page_xpath_num = page_xpath_num + 1  # expected to already be on page 1
 
-    time.sleep(10)
-    # Get Requests
-    starting_pagexpath_index = starting_pagexpath_index + 1
-    navigateNextResult(driver, starting_pagexpath_index)
+    for i in range(page_count, (max_page_count + 1)):
+        print("Page numnber: " + str(i))
+        print("xpath_index: " + str(page_xpath_num))
+        time.sleep(5)
+        currentDataSet = getLicensesFromRequestData(driver)
+        dataSetList.append(currentDataSet)
+        time.sleep(5)
+        if (page_xpath_num == 12):
+            if(i & 1):
+                page_xpath_num = 11
+                # don't navigate to next page
+            else:
+                page_xpath_num = 3
+                navigateNextPage(driver)
+        time.sleep(10)
+        navigateNextResult(driver, page_xpath_num)
+        page_xpath_num = page_xpath_num + 1
 
-    time.sleep(10)
-    # Get Requests
-    starting_pagexpath_index = starting_pagexpath_index + 1
-    navigateNextResult(driver, starting_pagexpath_index)
-
-    time.sleep(10)
-    # Get Requests
-    starting_pagexpath_index = starting_pagexpath_index + 1
-    navigateNextResult(driver, starting_pagexpath_index)
-
-    time.sleep(10)
-    # Get Requests
-    starting_pagexpath_index = starting_pagexpath_index + 1
-    navigateNextResult(driver, starting_pagexpath_index)
-
-    time.sleep(10)
-    # Get Requests
-    starting_pagexpath_index = starting_pagexpath_index + 1
-    navigateNextResult(driver, starting_pagexpath_index)
+    return dataSetList
 
 
-def navigateNextResult(driver, starting_pagexpath_index):
+def navigateNextResult(driver, page_xpath_num):
     WebDriverWait(driver, 10)
     page_button = (
-        '/html/body/div[1]/div/alx-search/div/div[5]/div/alx-results/nav/ul/li[' + str(starting_pagexpath_index) + ']/a')
+        '/html/body/div[1]/div/alx-search/div/div[5]/div/alx-results/nav/ul/li[' + str(page_xpath_num) + ']/a')
+    element = driver.find_element(By.XPATH, page_button)
+    driver.execute_script("arguments[0].click();", element)
+
+
+def navigateNextPage(driver):
+    WebDriverWait(driver, 10)
+    page_button = (
+        '/html/body/div[1]/div/alx-search/div/div[5]/div/alx-results/nav/ul/li[12]/a')
     element = driver.find_element(By.XPATH, page_button)
     driver.execute_script("arguments[0].click();", element)
 
@@ -97,5 +109,12 @@ def getLicensesFromRequestData(driver):
             body_unicode = request.response.body.decode('utf-8')
             body = json.loads(body_unicode)
             licenses = getLicenseData(body)
-      return licenses 
+    return licenses
 
+
+def getMaxPageCount(results, results_per_page):
+    max_page_count = round(results / results_per_page)
+    if (max_page_count > 0):
+        return max_page_count
+    else:
+        return 1
