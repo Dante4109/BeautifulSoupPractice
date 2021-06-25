@@ -1,0 +1,166 @@
+Delivered-To: smtpsender4109@gmail.com
+Received: by 2002:ac0:b084:0:0:0:0:0 with SMTP id l4csp282097imc;
+        Mon, 26 Nov 2018 10:28:02 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Xb3HwZhJr54TEf/7FKhs6ahSyqMKAj+s1VsmkXZzAVJR5nxZIVXsFBFp2sWm3KipJebG3a
+X-Received: by 2002:a02:908d:: with SMTP id x13mr12876377jaf.65.1543256882298;
+        Mon, 26 Nov 2018 10:28:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543256882; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WNURmX9GiHHS5FL269rWgA0DV6BurtVGygEqQU+TTZpIzRPJf+yZ7kIoYwcPPjqseU
+         cdXbmWulc0M07mGGkcO4kIEfiL9hnYzvyeb58GtJwVJ74Avs45IMCK6xmrtvjVIhqInI
+         Cymu5XYkJBlIt0b4GFtK9gskKoHyVgNjkVW2+nXBDT8Y5ADY9anqFU2NlikwNIxTroBh
+         m2GmbT8SuWICoCezFb6T+v8oiadTAlVOCpc2o2l2uug36vHlKGxDwWYwGhmUqKOnKDk6
+         pl2yc6XUx+mBLX240MWO+S5sP2ikABjNlFrvAW9/JSkNCIoWspu06bLRZEAWsovirddD
+         u5aA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature;
+        bh=7ekmIZ9tOZTOkzbgAw34Npy1yLON7qp0eaOw2pLCjCc=;
+        b=xg5gkJZUYMFtAghx4Y5mTiy72siMVjk1jd3gcUXJrus/kZPDbYTD14rGLKdQ9Fvtk4
+         VbqVphumt35MWfo0r7Gx0fRz5Odgee21VMxIfEl0UN4rpf0GK83YpAB9tUSHcRLuK4Eg
+         Cb3CkA1CQGQrE1MJLYJCdbI3tEvQ1sTtYncL6Ll+uFU5u64pMjcLrBmeMx317zZjONcL
+         Qnnu3pgUFhmclLHrttoPNbDMq/m5usckbmfmxQiv1IqfiH1Pjj/k2aqrSCI5Ifz4Uomj
+         D10mvv17Rv95VR1aOEkEADq2OHP22S7JsOt+yTP/9NTsHU2z84Fks4VzYdw55HEXjWf4
+         PKBw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@optum.com header.s=dk.sep2016.2048 header.b=klGNtMa4;
+       spf=pass (google.com: domain of noreply_healthid@optum.com designates 149.111.143.24 as permitted sender) smtp.mailfrom=noreply_healthid@optum.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=optum.com
+Return-Path: <noreply_healthid@optum.com>
+Received: from mail315.commmailsvcs.com (mail315.commmailsvcs.com. [149.111.143.24])
+        by mx.google.com with ESMTPS id x128si1148775itc.51.2018.11.26.10.28.01
+        for <smtpsender4109@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Nov 2018 10:28:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply_healthid@optum.com designates 149.111.143.24 as permitted sender) client-ip=149.111.143.24;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@optum.com header.s=dk.sep2016.2048 header.b=klGNtMa4;
+       spf=pass (google.com: domain of noreply_healthid@optum.com designates 149.111.143.24 as permitted sender) smtp.mailfrom=noreply_healthid@optum.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=optum.com
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=optum.com; i=@optum.com; q=dns/txt;
+  s=dk.sep2016.2048; t=1543256882;
+  h=date:from:to:message-id:subject:mime-version:
+   content-transfer-encoding;
+  bh=wW5H8zPN+GCtlNUFYfIvVcPV5i49OghO1wBYo1mxxvw=;
+  b=klGNtMa4Nc51V7QD3TJEV8XVcZmdc9+lBILTxJJwrRGgbY9gvHWhkJTF
+   /qJmRsGXaw36TXL/J/YyTSbeA+15R4F3PT7Rvw0SHNc5n15ERAlW1vNqs
+   Vi+1ERYr9v5mojETkVRXT1jmcfSZvFKFS3XSFxVG2w87TLLRemkEFNIoA
+   qTxk92w6t7lhakTXmT9b0uXGHqcMxQQ6UTIzGMk/n0zXrNhDKjqfdIf0Z
+   SIIqJfpXFKy4YTXYhagzwwZlqTGfu9LxafKX2Mf0PfCygz2Zvgm4kpA7g
+   7p780HQFvK5uVD+l9y/7GWX73TirvStYE+zrv8kO96hYprNf/qfPDqUkg
+   g==;
+X-IronPort-AV: E=Sophos;i="5.56,283,1539666000"; 
+   d="scan'208,217";a="12658318"
+Received: from unknown (HELO apsrp3700.uhc.com) ([10.86.216.235])
+  by mail315.commmailsvcs.com with ESMTP; 26 Nov 2018 12:28:01 -0600
+Received: from apsrp3700.uhc.com (localhost [127.0.0.1])
+	by apsrp3700.uhc.com (8.14.4/8.14.4) with ESMTP id wAQIS1Vp041361
+	for <smtpsender4109@gmail.com>; Mon, 26 Nov 2018 12:28:01 -0600
+Date: Mon, 26 Nov 2018 12:28:01 -0600 (CST)
+From: noreply_healthid@optum.com
+To: smtpsender4109@gmail.com
+Message-ID: <-450809885.528891.1543256881756.JavaMail.wsuser@apsrp3700.uhc.com>
+Subject: Confirm your Optum ID email address
+MIME-Version: 1.0
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Your Optum ID account information
+    </title>
+    <style type="text/css">
+        .textRegular
+        {
+            color:#000;
+            font-family:"Arial Regular","Arial";
+            font-size:13px;
+        }
+
+        .textRegularBold
+        {
+            font-family:"Arial Regular","Arial";
+            font-size:13px;
+            font-weight:bold;
+        }
+
+        .textTitle
+        {
+            color:#C36121;
+            font-family:"Arial Bold","Arial";
+            font-size:16px;
+            font-weight:bold;
+        }
+
+        .tableCellBorder
+        {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 0px;
+        }
+
+        .tableWhole
+        {
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+            border-collapse:collapse;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="content" role="main">
+
+
+        
+    
+
+    
+
+
+<table style="border: 0px; padding: 0px; margin: 0px; border-collapse:collapse; font-family: 'Arial Regular', 'Arial'; font-size: 13px;" role="presentation">
+    <tr>
+        <td style="border: 1px solid #ccc; padding: 15px; margin: 0px;">
+        <img  alt="MAHealthConnector" src="https://healthid.optum.com/tb/services/rest/rp/rpapplogo?rpid=MHC28623">
+        <h1 style="font-size: 16px; color: #924719; font-weight: bold; font-family: 'Arial Bold' , 'Arial';margin-top: 0px !important; margin-bottom: 7px !important;" id="emailHeading"><br/>Just one step left to do and your Optum ID will be ready to use. Click the button:<br/></h1>
+        
+           
+          
+
+
+
+	
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center" style="color: #000; font-family: 'Arial Regular', 'Arial'; font-size: 13px;;  display: block; background-color:#f3f3f3;">
+			<a style="display: inline-block; font-size: 17px; background-color:#f3f3f3; width: 200px; height: 28px; padding: 26px; text-decoration: none; color: #333333; border: 1px solid #333333; text-align: center;" href="https://healthid.optum.com/tb/link/verify-account?verificationDetails=aIU2%2FsToI3yr4Abb1lq83FotWJAbimH0e7Cr60dDMI%2B6TX%2BxdxOzWheDST7ay7lAu4wKxLpDlc5fIXG%2BYEEZ0dy3utZ%2B46DWDx9X7hddDz1n6JphpIbJX8AcGGbt%2BXaKMKsgSK7MoIBLgRuskIgYamtjbaHtX6tn3mMM6UB%2Fbs%2B%2FqckteZYUO8q9QyuxaUW2a%2BA58CTAflU%2FLZ3p%2FD%2FD5sslWxKvES0%2BaVyaFlP6ULcxPZP1dgMw2OJrTkM%2FWybnFOp1%2BpVnKHFUU474S5svLR3o8a7KNySEHft2XuKW5ks%3D&relyingAppId=MHC28623" id="ActivateButton">Activate my Optum ID
+</a>
+			</td>
+		</tr>
+	</table>
+
+	<p style="color: #000; font-family: 'Arial Regular', 'Arial'; font-size: 13px;margin-top: 0px !important; margin-bottom: 7px !important;; margin-top: 20px !important;" id="emailRegistrationPrimaryCode">
+    	If you prefer, copy this 10-digit code 4469455582 and paste it into the box for the activation code on the Activate Your Optum ID page.
+	</p>
+	<p style="color: #000; font-family: 'Arial Regular', 'Arial'; font-size: 13px;margin-bottom: 0;display: inline;" id="emailRegistrationPrimaryNotRequestedMsg">
+    	If you did not request an activation link or code, or if you have questions about setting up an Optum ID, contact us at 1(877)623-6765 .
+	</p>
+
+
+</div>
+<div role="contentinfo">
+<p style="margin: 26px 0 0;" id="emailThank">Thank you,
+</p>
+<p style="margin:0;" id="companyName">Optum ID</p>
+</div>
+</td>
+</tr>
+
+</table>
+</body>
+</html>
