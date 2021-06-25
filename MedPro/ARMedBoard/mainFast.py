@@ -1,6 +1,7 @@
 from urlListFast import getAllUrlsBasedOnLicenseType
 from dataSetFast import getDataSetFromUrl
 from exportCSV import writeExampleCSV, exportDicAsCSV
+import time
 import requests
 
 base_url = (
@@ -10,8 +11,11 @@ license_type = "PA"
 dataSetList = list()
 requests_session = requests.Session()
 
+tic = time.perf_counter()
 urls = getAllUrlsBasedOnLicenseType(
-    base_url, license_type, 18409, 18450, requests_session)
+    base_url, license_type, 18409, 18410, requests_session)
+toc = time.perf_counter()
+print(f"Grabbed {len(urls)} urls in {toc - tic:0.4f} seconds")
 print(license_type + " Count: " + str(len(urls)))
 
 for url in urls:

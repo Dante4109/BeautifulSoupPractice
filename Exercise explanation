@@ -32,7 +32,7 @@ but that would be more resource intensive and expensive. It certainly is a valid
 also confirmed ASMB starts at index 0
 https://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB0
 
-I used beatifulsoup to create a script that takes in paramters for the desired license, return valid urls, and then scrape the data via xml tags. From there the data is reorganized as an object via 
+I used beatifulsoup to create a script that takes in paramters for the desired license, return valid urls, and then scrape the data via xpath tags. From there the data is reorganized as an object via 
 a custom class and exported to a csv.
 
 
@@ -43,9 +43,7 @@ https://doh.force.com/ver/s/
 JS framework. When searching for data it is returned via a json call. The provided example when applied to the search box makes a js call but the address Board
 does not change. 
 
-
 Localstorage only contains two variables. They don't seem necessary to get the data 
-
 
 2. The requested data is returned as json. One important note though is that the search results are 
 using server side pagination. This means a new web request is made each time a page request is made. 
@@ -85,7 +83,7 @@ https://techmedweb.omb.state.or.us/search
 
 1. Website opens a new window upon entry into the search bar. Network tab reveals licennsee-search using angular.js. So this newer site is made in angular. 
 
-While a new page is opened the actual request reponse still comes in as json which means that page redirect doesn't matter when it comes to scraping if you were using a webdriver. 
+While a new page is opened the actual request reponse still comes in as unicode which means that page redirect doesn't matter when it comes to scraping if you were using a webdriver. 
 
 The search criteria under Licensee Search is effectively building out a json object depending on what is chosen and sending that as a request.
 The best way to get this data is to mimic this process with the scraper. We will also keep in mind a public token is being sent. 
@@ -180,6 +178,15 @@ Since I created scripts for the first site which the example is a static copy of
 
 MedPro/ArMedBoard/dataSet.py 
 
+The element ids are still contatined within the xpath 
+
+CSS path 
+
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblLicnumInfo" class="indent">E-8314</span>
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblORdateInfo" class="indent">10/18/2013</span>
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblEndDateInfo" class="indent">01/31/2022</span>
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblCategoryInfo" class="indent">Unlimited</span>
+
 
 Performance considerations. 
 
@@ -194,4 +201,11 @@ Executing webscrapes in batches to save time using.
 Taking advantage of python multi processing module. 
 Using more time and memory efficient data structures by rewriting a lot of human readable code to be less lines and more efficient. 
 Taking advantage of better hardware or even farms. 
+
+CSS path 
+
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblLicnumInfo" class="indent">E-8314</span>
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblORdateInfo" class="indent">10/18/2013</span>
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblEndDateInfo" class="indent">01/31/2022</span>
+<span id="ctl00_MainContentPlaceHolder_lvResultsLicInfo_ctrl0_lblCategoryInfo" class="indent">Unlimited</span>
 
