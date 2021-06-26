@@ -1,0 +1,373 @@
+Delivered-To: smtpsender4109@gmail.com
+Received: by 10.192.227.202 with SMTP id k10csp411437imp;
+        Fri, 27 Apr 2018 00:20:19 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZo0uR+oh2uRqTReCYm61hO7X/vbPpQLi+yieEzj8JxTwpcYLcaJmEUJTOzigs12s3B9V60H
+X-Received: by 2002:aed:3169:: with SMTP id 96-v6mr1030087qtg.43.1524813619242;
+        Fri, 27 Apr 2018 00:20:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524813619; cv=none;
+        d=google.com; s=arc-20160816;
+        b=AOlkadffjZWU6e+vDK1jyFtl6MLFp0GAVOuejE2LEEHUFqu3cGRTnOpwprsHompxT9
+         UigolmS3RYH/ypmEI23m5RgewATX/d3gE7+zEGqY05VAoDFBBrKgWE9wNmkkQ5pKzFi6
+         9zNHGXjqqCp2RjHHC0NyetJ8Rap9cPv8YU70x2BI8J78zi2G2eOeP1tA0sThEOJDSZIy
+         01lDBLloujBLscyRFtdDF5InlgwmEWoXwJlI7GopKqzKPCLAWIEwF8yw+Xofm2pxIdt4
+         JhmLfIBlXP5L9mJSArqn7O0ZZl+8cdEefkBZmCWmgB8j+bVBrz19IHBKUrc3qzWWqg6B
+         a93Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:to:subject:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=73SaSfDjJ5E0RBdm5hErclTZ9lkAm58eN7X87NYZxVw=;
+        b=bexDy2jWBYgEqEvNbcHWwXIgZHgDFhhH86ybARlYQVo3mJJpRN+aBmiq+fF7ViL4Bn
+         h1YVp85j14dffL4UFY2vJs2T2yakNuoaTU7O9WiBj5ZJa5n4iWVKY8/U5pW+ysClwSL+
+         CX7htvCFeLMsbCaPvli6KSpKUPEAJJJ7zkpr1/SFwWmR7dwYLKmL0AnVY32M2hzg9Uuj
+         OpiCf6a8Hmk773IQ2ISsUTLxVWvsisgBmUgDI6L8CyPQsvSLtiIQIdjZW0ckRKdurdBS
+         /enIlBRZVDSCH2DQIRaL3nvqu+uHQPNDLJb2gqxWyUUqgw9foOTfQ1Msc3ZM5RKy9owL
+         iOpw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@atlassian.com header.s=s1 header.b=Kr1Wlwud;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=utUEFfoP;
+       spf=pass (google.com: domain of noreply@mail.notifications.atlassian.com designates 167.89.14.106 as permitted sender) smtp.mailfrom=noreply@mail.notifications.atlassian.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=atlassian.com
+Return-Path: <noreply@mail.notifications.atlassian.com>
+Received: from o25.mail.notifications.atlassian.com (o25.mail.notifications.atlassian.com. [167.89.14.106])
+        by mx.google.com with ESMTPS id d187si693107qkc.6.2018.04.27.00.20.18
+        for <smtpsender4109@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Apr 2018 00:20:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@mail.notifications.atlassian.com designates 167.89.14.106 as permitted sender) client-ip=167.89.14.106;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@atlassian.com header.s=s1 header.b=Kr1Wlwud;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=utUEFfoP;
+       spf=pass (google.com: domain of noreply@mail.notifications.atlassian.com designates 167.89.14.106 as permitted sender) smtp.mailfrom=noreply@mail.notifications.atlassian.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=atlassian.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=atlassian.com; 
+	h=content-transfer-encoding:content-type:from:mime-version:subject:to; 
+	s=s1; bh=7a3crFZBQQS8yrYLIpsl9gxaWKk=; b=Kr1WlwudZqHWCGeC4hcZYGg
+	pzTtMpVJGoq6GfjUYTCnOtYVatea0a6vZnHjzPlbFo2Gt554vY+KhkGTEqBfJ2SC
+	suha57aob6b5dG/arqTTuUzVyzEBV57fqRxZ61UsCS6gIG0b3N3CvadD3tUHESgl
+	YJVdgkiu1cjmyKPML7wY=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=sendgrid.info; 
+	h=content-transfer-encoding:content-type:from:mime-version:subject:to:x-feedback-id; 
+	s=smtpapi; bh=7a3crFZBQQS8yrYLIpsl9gxaWKk=; b=utUEFfoPG950hgOaIg
+	nZ9qO4dAcmqJTYDM9AM7IP4nKrQQ41TRD49tYKkjXa4ibzTwbRMleTjDU8dkcY8+
+	0pdNH4UXiXmxg0SDnPLuizM6RSEuH0hMpYaTGQDmYpATibSeNKjRDvuY2/gqO+yV
+	cOpYHXsWZVgvaA1mPvo+EazaY=
+Received: by filter0714p1las1.sendgrid.net with SMTP id filter0714p1las1-23820-5AE2CF32-9
+        2018-04-27 07:20:18.169813671 +0000 UTC
+Received: from MjMwNjk4Ng (ec2-52-52-234-127.us-west-1.compute.amazonaws.com [52.52.234.127])
+	by ismtpd0010p1las1.sendgrid.net (SG) with HTTP id AW0tPakWQxexcNr6f8jcUA
+	for <smtpsender4109@gmail.com>; Fri, 27 Apr 2018 07:20:18.111 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Date: Fri, 27 Apr 2018 07:20:18 +0000 (UTC)
+From: "Atlassian" <noreply@mail.notifications.atlassian.com>
+Mime-Version: 1.0
+Subject: Patrick invited you to collaborate on the rt-bot repository on Bitbucket
+To: smtpsender4109@gmail.com
+Message-ID: <AW0tPakWQxexcNr6f8jcUA@ismtpd0010p1las1.sendgrid.net>
+X-SG-EID: WhiNfCih/iEHnbCFVgB8S3qdAsaGNu+YeP87HDhygzjmWrQp9cr0xjKUn2Jzhra2KQ/lEbPFl46vUh
+ nLdjpcAbDExw6qBiBi8mjoaXLS5SHRMgo2PKPQkd9w1o93CT/BGDzlORyYLkqeLny/ie95iZXMfhVK
+ hJslAk6hYPPjvweW1Dc1jZhNcVYrqB0h1j9BYuZ1kzUL8A811KmN/+KM6dyvNM0VdGPGaOMJ7qcVmW
+ XcTS3wgvgqYR0o6Mmuud2Z
+X-SG-ID: MB6C+oA6yqoDiTqHYYo8OawwvgP5MCOip9UdpuYm62zDk2dT0s2pOKYheN2JDtn7
+X-Feedback-ID: 2306986:CDr4TF+bIWNVzUWGh99tK5T43YwN6FeIWLJeQ8F+nrE=:B3Pw66ZH9SPwUuh06Nc3cRZ2WQ2efA1NqMYR0BVWj60=:SG
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Atlassian</title>
+    <meta charset=3D"utf-8" />
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width" />
+    <style type=3D"text/css">
+        /* CLIENT-SPECIFIC STYLES */
+        #outlook a{padding:0;} /* Force Outlook to provide a "view in brows=
+er" message */
+        .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotm=
+ail to display emails at full width */
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalCla=
+ss font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Forc=
+e Hotmail to display normal line spacing */
+        body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adj=
+ust:100%;} /* Prevent WebKit and Windows mobile changing default text sizes=
+ */
+        table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove sp=
+acing between tables in Outlook 2007 and up */
+        img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of=
+ resized image in Internet Explorer */
+        /* RESET STYLES */
+        body{margin:0; padding:0;}
+        img{border:0; height:auto; line-height:100%; outline:none; text-dec=
+oration:none;}
+        table{border-collapse:collapse !important;}
+        body{height:100% !important; margin:0; padding:0; width:100% !impor=
+tant;}
+        /* iOS BLUE LINKS */
+        .appleBody a {color:#68440a; text-decoration: none;}
+        .appleFooter a {color:#999999; text-decoration: none;}
+        /* MOBILE STYLES */
+        @media screen and (max-width: 480px) {
+            .wrapper_shrink {
+                width:100% !important;
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+            }
+            .table_shrink {
+                width:95% !important;
+            }
+            .hero {
+                width: 100% !important;
+            }
+            .left_table, .right_table {
+                 width:100% !important;
+            }
+            .td{
+                padding-right: 10px !important;
+            }
+            .footer{
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
+            #footer_logo{
+                padding-right: 0px !important;
+            }
+        }
+    </style>
+=20=20=20=20
+	<meta charset=3D"UTF-8" />
+=09
+=09
+
+=09
+=20=20=20=20
+=09
+=20=20=20=20
+</head>
+<body>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" bgco=
+lor=3D"#ffffff" class=3D"table_shrink" align=3D"center">
+    <tr>
+        <td>
+            <table width=3D"520px" cellpadding=3D"0" cellspacing=3D"0" bord=
+er=3D"0" bgcolor=3D"#ffffff" align=3D"center" class=3D"table_shrink">
+                <tr>
+                    <td valign=3D"top">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" bgcolor=3D"#ffffff" class=3D"table_shrink">
+                            <tr>
+                                <td>
+                                    <div>
+        <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D=
+"0" bgcolor=3D"#ffffff" class=3D"table_shrink">
+            <tr>
+                <td valign=3D"top" align=3D"center" style=3D"padding-top: 3=
+0px; padding-bottom: 10px;">
+                    <a href=3D"http://www.atlassian.com" alias=3D"atlassian=
+ header logo">
+                        <img src=3D"http://cpfs-cdn.atlassian.com/assets/sh=
+ared/id-summit/id-summit-email_logo_360x80_NEW.png" width=3D"186" border=3D=
+"0" alt=3D"Atlassian" style=3D"display:block; color:#4c9ac9; align:center" =
+align=3D"middle" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style=3D"color:#cccccc; padding-top: 10=
+px;" valign=3D"top">
+                                    <hr color=3D"#cccccc" size=3D"1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div>
+    <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+bgcolor=3D"#ffffff" class=3D"table_shrink">
+        <tr valign=3D"top">
+            <td align=3D"center" style=3D"padding-bottom: 20px; padding-top=
+: 30px;">
+                <a href=3D"https://www.atlassian.com/software/bitbucket" al=
+ias=3D"bitbucket logo">
+                    <img src=3D"http://cpfs-cdn.atlassian.com/assets/shared=
+/id-summit/id-summit-bb-email-invite-bb-logo.png" width=3D"150" border=3D"0=
+" alt=3D"Bitbucket" style=3D"display:block; color:#4c9ac9; align:center" al=
+ign=3D"middle" />
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div>
+=20=20=20=20=20=20=20=20
+=20=20=20=20=20=20=20=20
+            <tr valign=3D"top">
+                <td align=3D"center" style=3D"padding-top: 20px;">
+                    <img height=3D"93" width=3D"90" border=3D"0" style=3D"d=
+isplay:block; color:#4c9ac9; align:center" align=3D"middle" src=3D"https://=
+avatar-cdn.atlassian.com/99f9ce05e9e9762b12c3c9db3bdbb317?s=3D128&amp;ts=3D=
+1524813093" />
+                </td>
+            </tr>
+=20=20=20=20=20=20=20=20
+    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div>
+        <tr>
+            <td valign=3D"top" style=3D"padding-top: 40px; font-family:Helv=
+etica neue, Helvetica, Arial, Verdana, sans-serif; color: #205081; font-siz=
+e: 20px; line-height: 32px; text-align:center; font-weight:none;" align=3D"=
+middle">
+                <span>
+
+
+
+
+    <strong>Patrick Hanford</strong> invited you to collaborate on
+    <strong>sitesbycode/rt-bot</strong> on Bitbucket.
+
+</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td valign=3D"top" align=3D"center">
+                <table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" ali=
+gn=3D"center">
+                    <tr>
+                        <td align=3D"center" style=3D"padding-top: 30px; pa=
+dding-bottom: 10px">
+                            <a target=3D"_blank" style=3D"font-size: 16px; =
+font-family: Helvetica, Helvetica neue, Arial, Verdana, sans-serif; font-we=
+ight: none; color: #ffffff; text-decoration: none; background-color: #3572b=
+0; border-top: 11px solid #3572b0; border-bottom: 11px solid #3572b0; borde=
+r-left: 20px solid #3572b0; border-right: 20px solid #3572b0; border-radius=
+: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; display: inline=
+-block;" class=3D"mobile-button" alias=3D"Button" href=3D"https://id.atlass=
+ian.com/signup/invite?application=3Dbitbucket&amp;signature=3DeyJhbGciOiJIU=
+zI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6Imludml0ZSIsImV4cCI6MTUyNTQxODQxNywiaWF=
+0IjoxNTI0ODEzNjE3LCJzdWIiOiJzbXRwc2VuZGVyNDEwOUBnbWFpbC5jb20iLCJpc3MiOiJhY2=
+NvdW50In0.sN_4dD7GhEDKZFDGcX3L191qxUhmluKzKhFrz1NJprU&amp;exp=3D1525418417&=
+amp;invitee=3Dsmtpsender4109%40gmail.com&amp;continue=3Dhttps%3A//bitbucket=
+.org/socialauth/login/atlassianid/?chosen_aid%3Dsmtpsender4109%2540gmail.co=
+m%26next%3Dhttps%253A%252F%252Fbitbucket.org%252Finvitations%252Frepository=
+%252FEb3sbZKVwJb17I0KguoWytRYdyIRkhUS&amp;source=3Da1ece0d337deaac61592478f=
+9b0ab9a7">Accept my invitation</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" align=3D"left">
+                                    <div></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width=3D"520px" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" bgcolor=3D"#ffffff" class=3D"table_shrink" align=3D"ce=
+nter">
+                            <tr>
+                                <td style=3D"color:#cccccc; padding-top: 20=
+px;" valign=3D"top" width=3D"100%">
+                                    <hr color=3D"#cccccc" size=3D"1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+    <table width=3D"520px" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"=
+ bgcolor=3D"#ffffff" class=3D"table_shrink" align=3D"center">
+        <tr>
+            <td valign=3D"top" style=3D"padding-top: 10px; font-family: Hel=
+vetica, Helvetica neue, Arial, Verdana, sans-serif; color: #707070; font-si=
+ze: 12px; line-height: 18px; text-align:center; font-weight:none;" align=3D=
+"center">
+                <br /><span>This message was sent to you by Atlassian Cloud=
+</span><br />
+            </td>
+        </tr>
+        <tr valign=3D"top">
+            <td align=3D"center" style=3D"padding-top:20px; padding-bottom:=
+30px;">
+                <a href=3D"https://www.atlassian.com" alias=3D"atlassian fo=
+oter logo">
+                    <img src=3D"http://cpfs-cdn.atlassian.com/assets/shared=
+/id-summit/id-summit-logo-email-footer.png" width=3D"114" border=3D"0" alt=
+=3D"Atlassian" style=3D"display:block; color:#4c9ac9;" />
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+                                    <custom name=3D"opencounter" type=3D"tr=
+acking"></custom>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<img src=3D"https://link.notifications.atlassian.com/wf/open?upn=3DZsMHcbOt=
+6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzswpHqsVwuL2B7ixX0IhkqApGn1gMO2k8qPLw8HoERU=
+-2FvmR9XhOfnRTpUmvydPaWfMCSh6qMUGJHcYa1ECqknQUZcB-2FXngK7g9VdwvVIUiK9Lq9e-2=
+F2yUn00sceaEhh-2B-2BEjpElYt6mNu5yoNKq7DbrmjZpl8IbRXrbS2lHHPeFPAFmfjVlz2ckng=
+DECsZ7jlLlwmoWM4PRgJhitXEatKFGThCQFf1E0FWvzSAcVki6kkRvw-3D-3D" alt=3D"" wid=
+th=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px=
+ !important;border-width:0 !important;margin-top:0 !important;margin-bottom=
+:0 !important;margin-right:0 !important;margin-left:0 !important;padding-to=
+p:0 !important;padding-bottom:0 !important;padding-right:0 !important;paddi=
+ng-left:0 !important;"/>
+</body>
+</html>
+

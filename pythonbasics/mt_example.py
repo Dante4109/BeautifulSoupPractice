@@ -1,20 +1,20 @@
 import concurrent.futures
 import time
 
+numList = []
+
 start = time.perf_counter()
 
 
 def do_something(seconds):
     print(f'Sleeping {seconds} second(s)...')
-    time.sleep(seconds)
-    return f'Done Sleeping...{seconds}'
+    numList.append(seconds)
 
 
 # context manager
-with concurrent.futures.ThreadPoolExecutor() as executor:
-    secs = [5, 4, 3, 2, 1]
+with concurrent.futures.ThreadPoolExecutor(max_workers=None) as executor:
+    secs = range(0, 100000)
     results = executor.map(do_something, secs)
-
     # for result in results:
     #     print(result)
 
@@ -29,5 +29,5 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 #     thread.join()
 
 finish = time.perf_counter()
-
+print(numList)
 print(f'Finished in {round(finish-start, 2)} second(s)')

@@ -37,7 +37,6 @@ media
 mediafiles_cdn
 api/static
 test data
-emails
-emails*
-
+/emails
+/emails*
 # Django files

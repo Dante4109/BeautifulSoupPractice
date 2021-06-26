@@ -1,0 +1,515 @@
+Delivered-To: smtpsender4109@gmail.com
+Received: by 10.192.227.202 with SMTP id k10csp1004581imp;
+        Fri, 27 Apr 2018 10:13:14 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZr10gpE8Kb+yCcLbR3McDUsoOlQSQD4AVhablhOfNKK2NQXeEtA0n90q5gIMVQgo3zMR9fx
+X-Received: by 10.55.21.234 with SMTP id 103mr2633388qkv.349.1524849193960;
+        Fri, 27 Apr 2018 10:13:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524849193; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sxCCj5yLOe+z5lQGq+I8dmOKrs9gTHDX9fHnIx+BlavhZ7Z+/Ga/iyrDxvmeLlHyub
+         30EvmuUWK5Q8vSFBmUcqDDVOot7gdWjRWDWcwVEPC2JZGh4frqfkrr0yc5Sipc4d8t3E
+         Owhk5xiomtu7GW50qymhtEFf4+0hOnt9AXGwn1YAJTP3R5cz6JI2zjhVl2ctV1EDkMeX
+         EwILHrSxtubgrMfJXozlWpNxV5itKV4iQXNMfia1zD7wF6x/B1LgbO2y5NcLtpZbtAA0
+         GsKdu4melk6mCDZaABT4lZ6Gor49Wd3VdVd3/jHxoLP1N9UrqPX2X49wREb55h+vgFcN
+         O0JA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=subject:message-id:to:reply-to:mime-version:from:date
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=IlOATirDA01iyUCUL9XZSSVPHeMCnKr65u+4zV9YD+Y=;
+        b=wRx/BVrr9w2PF1N2haCxTYUWXjETJRJsgwr0wfyx+6Y1SZSUZjFYVzRcAsFGHxV9g+
+         sne8Ku16p1sPHt2nAUOWpFB9L1Nxqf0tmeRIwvF6lpjMwoPHaWfDw8s9vx06rhQOqlp9
+         REkW0pU31g0EJWwu1j7ntVkXd/kryDBCErGh0G8uhpiS3KWiLRHRgBj8VGaTglkuF3zb
+         Db5j/1WyOVcNLVROt896uiPTqOcytK/oZAEI3xd8a3i+bducTEy0Zd92GraB74YdlLLr
+         D69px+96snx+y5GGHiYFUmH2kkqNRX0sFZAhIiTFbU6QAvWFPG/wj7SAwKh8vz7B/9Kd
+         GS9w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@engagement.atlassian.com header.s=s1 header.b=OdKQ6PH9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=h3KKJ9+t;
+       spf=pass (google.com: domain of bounces+2418819-1f88-smtpsender4109=gmail.com@em.engagement.atlassian.com designates 167.89.102.83 as permitted sender) smtp.mailfrom=bounces+2418819-1f88-smtpsender4109=gmail.com@em.engagement.atlassian.com
+Return-Path: <bounces+2418819-1f88-smtpsender4109=gmail.com@em.engagement.atlassian.com>
+Received: from o8.em.engagement.atlassian.com (o8.em.engagement.atlassian.com. [167.89.102.83])
+        by mx.google.com with ESMTPS id y27-v6si484882qvf.77.2018.04.27.10.13.13
+        for <smtpsender4109@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Apr 2018 10:13:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2418819-1f88-smtpsender4109=gmail.com@em.engagement.atlassian.com designates 167.89.102.83 as permitted sender) client-ip=167.89.102.83;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@engagement.atlassian.com header.s=s1 header.b=OdKQ6PH9;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=h3KKJ9+t;
+       spf=pass (google.com: domain of bounces+2418819-1f88-smtpsender4109=gmail.com@em.engagement.atlassian.com designates 167.89.102.83 as permitted sender) smtp.mailfrom=bounces+2418819-1f88-smtpsender4109=gmail.com@em.engagement.atlassian.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; 
+	d=engagement.atlassian.com; 
+	h=content-type:from:mime-version:reply-to:to:subject; s=s1; 
+	bh=OMS0npHFH9CBgNUEx7nccdTSEvw=; b=OdKQ6PH9L8Jhxbh/z0RcOjkYKMlkz
+	oVZWvWfGvEy6gzoyNSZ8jzxIqEVa6ZYFKUE607YQiiYadn4LcbipduIxayy0jDHW
+	elOQt1Mzmkgcc2tgV8SzTYuJztfpalXNJJR7NnX1pkC1Dul1HJAuMYBLhKLYcti8
+	pTEY+V/mvnSPn8=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=sendgrid.info; 
+	h=content-type:from:mime-version:reply-to:to:subject:x-feedback-id; 
+	s=smtpapi; bh=OMS0npHFH9CBgNUEx7nccdTSEvw=; b=h3KKJ9+t4rnpA0tt+1
+	WOwJNY5ryNraFGpX1pbCM35z8dmr804O2nrY5U908RkWRURajAd4waTpADKiTIaa
+	uasLASE45Y5G9Dn1H9NSVqSaBLIm1Onmu69cm4Yr6E0ofwbYIIMKSVdztYLN6cX3
+	oIsdFwmZ0RIh5uIV3X7XaauAU=
+Received: by filter0478p1las1.sendgrid.net with SMTP id filter0478p1las1-15582-5AE35A28-10
+        2018-04-27 17:13:12.583318803 +0000 UTC
+Received: from MjQxODgxOQ (unknown [104.192.142.132])
+	by ismtpd0046p1mdw1.sendgrid.net (SG) with HTTP id MzRAMuW-RVG66ZIaR1kcGA
+	Fri, 27 Apr 2018 17:13:12.385 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=e8ccd5aa1fff162d7ff356167bcb4c2f40a0f74e542914e9eeb38fcc0fb4
+Date: Fri, 27 Apr 2018 17:13:12 +0000 (UTC)
+From: "Bitbucket" <welcome@bitbucket.org>
+Mime-Version: 1.0
+Reply-to: noreply@bitbucket.org
+To: smtpsender4109@gmail.com
+Message-ID: <MzRAMuW-RVG66ZIaR1kcGA@ismtpd0046p1mdw1.sendgrid.net>
+Subject: Welcome to Bitbucket!
+X-SG-EID: WhiNfCih/iEHnbCFVgB8S3qdAsaGNu+YeP87HDhygziurkrMxm1Q22UPxPySpQkyzySaRd7gHxUXGY
+ hhWX+EQtX648X5la8Ew6niEmAWnMfXcN7BJvPZ03CPXyEkB2ulgHzHCJo0s10II+GvDITRcGxv6if1
+ J1Jv5WuA943Jx75Ux2XG5qkVulNs7fuqUGMc5OpwXGuTVVLEv43eoXH4FxuHsEsnwWBzXwzwVsxDpz
+ I=
+X-SG-ID: YDTqBOjidbCUo/ar1oAtZveY++q9FecvT6D+ymwa0lSb40AqRoxVP4cUxa7Jyg0pBi4d54PKGiChDc
+ 8vhg14BrY8RUZTqQ/5DSXLlEes7asibjHRbDN+X8ulvcFvwORK4m7PyTqRhPXGacFamfsfXmJPVlOA
+ MkblQt3d4mnAlpjaZzHGmFDic7Fr8d38BYa5lwrY5UqSOFP5IMiLN4kXSiLsSWZ56r1ayO33Ixkb6M
+ 1YeeG9p875oWaRoniis9XsnMoB/J3axRzkigV8isEfJ6II4z5uG4/1PHa3v4zQDaQ=
+X-Feedback-ID: 2418819:WEkPWnCufD/zytOG1zMHN0tLzcAq2FbSoa/ch2qcWd4=:sKZ7Dlaqjx4rkB2nXFeyDJn6xwIHPLOH9T1AO2Y/meI=:SG
+
+--e8ccd5aa1fff162d7ff356167bcb4c2f40a0f74e542914e9eeb38fcc0fb4
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+Welcome to Bitbucket! Someone likes us enough to invite you to host your co=
+de here, and we hope you do too :)
+
+Bitbucket allows you to track changes to your code, keep tabs on work that =
+needs to be done, and allows you to collaborate with others.
+
+And we have just the thing to familiarize yourself with Bitbucket. Check ou=
+t our handy tutorial and get started!
+
+Get started: https://link.engagement.atlassian.com/wf/click?upn=3DZsjHSwcsv=
+vpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqQh92g9UZX194PLEqJdeUXvefnjDA90bUt0bdrl=
+E5OAAuNfOdMK1ZZ0pwuEtr-2BNJBVtR1oe4YGDwCAKgUm6Uibww14Ce1IFHvOBb9cqy9dk7-2Bm=
+zIkOhdlksR-2BMEbsNkA4WubXF0mvOEg7SJKV6ZAb5P_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX=
+2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTz=
+f3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr=
+57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZB=
+IWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2=
+BPBhbQWIuEDzr4BJLR65zr9NUvV8A-2Fru8vXMPLD0pPL0dUrn2in6FhRH0fJ2JGA3HdWwmegGz=
+GxR9Jm0VIOhIZA7LCcaG-2Bc-2BI3cFNGapuyGhQ9jx3YeOuGUqByJVjwfYGlZUlgBnMp3jkMyt=
+bZOCyRfW2itSPETwfBptg5rSjx0KkJ7sdinochTMcn6AhcHldMLa0zLDHUHQ0PZJJIuV9
+
+
+___________________________________________________________________________=
+_______________________
+
+Privacy Policy - https://link.engagement.atlassian.com/wf/click?upn=3DZsjHS=
+wcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqSDvRo9nyGBrNkPkMRVuDV-2BM97GKaFhDW=
+Ftx4FsSKXMx6dANOmKzEEkl1oMCnItti4ohxnf5QoeLhjLHMIoVWahDrZVAyA9fVBEJfgP4mv-2=
+BClaX2h5O3vSPffKfbrv0H98-3D_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A=
+1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksK=
+Mp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKV=
+Lxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46=
+PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJ=
+LR65zZ9PT3FmPx0Ov7ETujWiQOHWlOl0Xurr5sdze9GCmr3TYMGlHuKXfKNm6EgRDLF-2B-2B4s=
+-2FE8QylexaucqETMgdgeKTauU0qkcxZsAqJlmQUoyXX0QB85bgPd4U4kr4nprH9vltzzmUYtPn=
+95-2BnWZW7H7EU9s7vV6y3D-2Fpb-2FnqSH9TcNWGbCzFT7g7L6TjBopwXZ
+
+Contact Us - https://link.engagement.atlassian.com/wf/click?upn=3DAOPl9ZpUZ=
+8ELVuIpSSeDrIHzTDzKj4rmlllyln0GYibHR-2FsqTwSVeVDa4PH43uW1iejzvfhpKZxk9jBDoY=
+UeOmRB6Pvtw0iXWqpxz4POIHLhuE1B7hbvW90abDJ9cFxikWirDsLCzEYFpayH7LnlyIagcW-2B=
+EVAYhEMRDz6fGtR96FEWOoE1n8DKOpUxzWu5q_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX2KQO6S=
+RRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTzf3B1tR=
+ET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEq=
+GccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeD=
+BeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQ=
+WIuEDzr4BJLR65zq9lPcX5euB-2B2lPS7rbt0yuQ7u7z6S6du63792e3J42Lqt7tZRbk-2FR7lG=
+wen-2Fzuf8BIw1iXIPLuyfajOjvc4luX9T4oPmiY4gZv-2BpfVYnCP8BRIQh0MTo51YW2Nk0ECM=
+Pkxisxi6geY1700Tr6P40PZ6RZy78ruUNLAlqDlwcJdpo-2BGVaJYzml2V3gUBRhjFs
+
+Read our Blog - https://link.engagement.atlassian.com/wf/click?upn=3DlGcAos=
+WG9yCiDisDpEKSaa307-2FYYL9BwHkhXUalo4GYoQqeZK8z9alLpiZl26T0Q9q5yQxnbHo-2FDw=
+LCv-2Fr5IZQZg5-2B703zXd9-2FaRlKhPlwqliQl2AyGD3xTATqRrQWVfxDmsrSnsP2I6lOneHL=
+ykVw-3D-3D_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZ=
+YGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2=
+FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT=
+412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQU=
+p01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65zYbybbB4AJqkG=
+KIXcLRNOhEyCmLzN4vv-2FMrvyzpRsIevnhiX6YJxkPtROIYTiOuEjb22miK38SUVLzxNjHc9Py=
+coZtRzOQesCfXCtdf-2Fat-2FuSeYWkc3hCBkXqY5eDXwPmIyQpDy5BAOn3vsxj-2BEsWlIRoWd=
+vxGkY-2F-2BxtBbHvUKfYlZAe-2FPg1wryTyyJXSeZOb
+
+Follow on Twitter - https://link.engagement.atlassian.com/wf/click?upn=3DZs=
+jHSwcsvvpXC-2Fnj-2FhgAJwBxIo960Zga9QqiUukw6SJ-2B2pAqOEJCDHW-2F1uUy3UQU7-2BS=
+fTis8nM2nyA4NG-2FFomY-2FrR6RTcb89fGLQSP3suesRN7I0sJMYM3ExYTWUxLubrvK0ORGJel=
+bezFCt9tt2CQ-3D-3D_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5=
+iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu=
+1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0=
+-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHi=
+lc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65zZJH4=
+X6lyI0-2F5Kf6bNd749de0bavwkOICHXR3MnZ-2BcEFAZwoQYbf1pIATULeSnA9uwMxey2jLNYu=
+7PGcCsVEKtxRKb38W9RYj31QMfPPsQeN-2BPz-2BggxF3DzzukNSZZ7kMXqmnbWqOio5fBF4fRt=
+V4NZCPeCnkptv6-2Bm4dZRoxAzk-2BqYXmRnuz0-2BIFxe3PKJ-2Ft=
+
+--e8ccd5aa1fff162d7ff356167bcb4c2f40a0f74e542914e9eeb38fcc0fb4
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Welcome to Bitbucket</title>
+	<meta charset=3D"utf-8">
+	<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+	<style type=3D"text/css">
+
+	/* CLIENT-SPECIFIC STYLES */
+    #outlook a{padding:0;}
+    /* Force Outlook to provide a "view in browser" message */
+    .ReadMsgBody{width:100%;} .ExternalClass{width:100%;}
+    /* Force Hotmail to display emails at full width */
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass f=
+ont, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+    /* Force Hotmail to display normal line spacing */
+    body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:=
+100%;}
+    /* Prevent WebKit and Windows mobile changing default text sizes */
+    table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+    /* Remove spacing between tables in Outlook 2007 and up */
+    img{-ms-interpolation-mode:bicubic;}
+    /* Allow smoother rendering of resized image in Internet Explorer */
+
+    /* RESET STYLES */
+    body{margin:0; padding:0;}
+    img{border:0; height:auto; line-height:100%; outline:none; text-decorat=
+ion:none;}
+    table{border-collapse:collapse !important;}
+    body{height:100% !important; margin:0; padding:0; width:100% !important=
+;}
+    /* iOS BLUE LINKS */
+    .appleBody a {color:#205081; text-decoration: none;}
+    .appleFooter a {color:#999999; text-decoration: none;}
+    /* MOBILE STYLES */
+    @media screen and (max-width: 480px) {
+        .table_shrink {
+            width:95% !important;
+        }
+		.hero {
+            width: 100% !important;
+        }
+    }
+	</style>
+</head>
+<body>
+<style type=3D"text/css">
+div.preheader
+{ display: none !important; }
+</style>
+<div class=3D"preheader" style=3D"font-size: 1px; display: none !important;=
+">Get started with your team</div>
+<!-- Insert &zwnj;&nbsp; hack after hidden preview text -->
+<div style=3D"display: none; max-height: 0px; overflow: hidden;">
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp=
+;&zwnj;&nbsp;&zwnj;&nbsp;
+</div>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" bgco=
+lor=3D"#ffffff" class=3D"table_shrink" align=3D"center">
+<tr>
+<td>
+	<!-- start body module -->
+    <table width=3D"520" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" b=
+gcolor=3D"#ffffff" class=3D"table_shrink"  align=3D"center">
+        <!-- start logo -->
+        <tr valign=3D"top">
+            <td align=3D"center" style=3D"padding-top:30px;">
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJ-2Ba1cJS-2FTUWyf-2B4O2Rd5213TsflAImZFEuS55I-2=
+BKe2rWaplExirRzR6eQ1P42qXMtn3mXsA8VY18ht8ah6egz30-3D_ZsMHcbOt6Ev5dENFMFc72u=
+q9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetY=
+C9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC=
+5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-=
+2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0=
+Meh-2FH-2BPBhbQWIuEDzr4BJLR65zOFctx0wkvgpv3tA9ILgts8ubOwGeKiQ6nrzt5fTGOjz-2=
+BocwZFAEwI3TVsAntrSFA2ai01AShRe-2F3O4at8cMlCNj65QMI1wtUsDOraBTcdHGYAJ6L6TK8=
+ffsJOSyg6cEmZ-2B6rx-2BF7WNOLqY3HffKCGvVs6meXrSxIGOoQRVVqyGOpg3WndHDcDI68vis=
+0ALgZ">
+                    <img src=3D"https://aes-artifacts--cdn.us-east-1.prod.p=
+ublic.atl-paas.net/hashed/kCtxkjMdcMaJtIyePxVLJYQjDlNQcH_2aKhvWL1etCs/Bitbu=
+cket@2x-blue.png" width=3D"220" border=3D"0" alt=3D"Bitbucket" style=3D"dis=
+play:block; color:#162B4D; align:center" align=3D"middle">
+                </a>
+            </td>
+        </tr>
+        <!-- end logo -->
+        <!-- start headline -->
+        <tr>
+            <td valign=3D"top" style=3D"padding-top: 30px; font-family:-app=
+le-system,BlinkMacSystemFont,'Segoe UI','Roboto','Noto Sans','Ubuntu','Droi=
+d Sans','Helvetica Neue',sans-serif; text-align:center;" align=3D"middle">
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqQh92g9UZX194PLEqJdeUXvef=
+njDA90bUt0bdrlE5OAAuNfOdMK1ZZ0pwuEtr-2BNJBVtR1oe4YGDwCAKgUm6Uibww14Ce1IFHvO=
+Bb9cqy9dk7-2BmzIkOhdlksR-2BMEbsNkA4WubXF0mvOEg7SJKV6ZAb5PoxZrlkGiy1-2ByumCT=
+Sj2SKQC-2F7d9Yaou1UCw2yZtedUY-3D_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzs=
+wzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DB=
+APksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccan=
+mabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1=
+sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuED=
+zr4BJLR65zr6ESdvb4lU6KBHH0KgNUWRsnQ41UjFm9y0nujcTQ049xT1kL3ZxKODQF-2FwtjKpV=
+0xrvSFflQcEyWH0jYQHAnVeQDWHSvVG8-2Bee2CHv3bAezhA7V-2BDHoJtPvsjsJ8YL4lmbNYx1=
+hFs8HCgJWutSSRKKnxWspxorny0FzsDqewqRMZJvhqGzAJ6t3yKqFvJ5jj" style=3D"text-d=
+ecoration:none; color:#172b4d;font-weight:500;line-height:24px;font-size:20=
+px">
+                    It's time to get started
+                </a>
+            </td>
+        </tr>
+        <!-- end headline -->
+        <!-- sub headline -->
+        <tr>
+            <td valign=3D"top" style=3D"padding-top: 10px; font-family:-app=
+le-system,BlinkMacSystemFont,'Segoe UI','Roboto','Noto Sans','Ubuntu','Droi=
+d Sans','Helvetica Neue',sans-serif; color:#172b4d; font-weight:400; line-h=
+eight:24px; font-size:16px; text-align:center;" align=3D"middle">
+                Simple steps to familiarize yourself with Bitbucket
+            </td>
+        </tr>
+        <!-- end headline -->
+        <!-- hero image start-->
+        <tr valign=3D"top">
+            <td align=3D"center" style=3D"padding-top: 30px;">
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqQh92g9UZX194PLEqJdeUXvef=
+njDA90bUt0bdrlE5OAAuNfOdMK1ZZ0pwuEtr-2BNJBVtR1oe4YGDwCAKgUm6Uibww14Ce1IFHvO=
+Bb9cqy9dk7-2BmzIkOhdlksR-2BMEbsNkA4WubXF0mvOEg7SJKV6ZAb5PoxZrlkGiy1-2ByumCT=
+Sj2SKQC-2F7d9Yaou1UCw2yZtedUY-3D_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzs=
+wzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DB=
+APksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccan=
+mabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1=
+sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuED=
+zr4BJLR65zjlMMz8NCSWKXZA7FakcSY7LrGLuLqdCEsatMiyXB9CHOlc6SqiPkjmpc8EGhv01-2=
+BsiSYGN37tRhDQBw0KYjL26tZjLVK-2BX6ZrBWcqlJ897ZVrWFi9XyM78hZ-2FJsPKORA2Rqzfb=
+H-2Brih5XxB-2Fjcia8wAwKbVkAy6lnODJCBQntCfZbhZQCVk6KefVr83UF4Vf" alias=3D"he=
+ro">
+                    <img style=3D"display: block;" src=3D"https://aes-artif=
+acts--cdn.us-east-1.prod.public.atl-paas.net/hashed/rs27nA2KElr0ZiNQYBZWOaY=
+pZqOKXifZUCH0it5UeWc/image2017-10-25_11-4-20.png" width=3D"520" height=3D"a=
+uto" border=3D"0" class=3D"hero">
+                </a>
+            </td>
+        </tr>
+        <!-- hero image end-->
+        <!-- start copy -->
+        <tr>
+            <td valign=3D"top" style=3D"padding-top: 30px; font-family:-app=
+le-system,BlinkMacSystemFont,'Segoe UI','Roboto','Noto Sans','Ubuntu','Droi=
+d Sans','Helvetica Neue',sans-serif; color: #172B4B; font-size: 14px; line-=
+height: 20px; text-align: left;" align=3D"middle">
+                <p>Welcome to Bitbucket! Someone likes us enough to invite =
+you to host your code here, and we hope you do too :)</p>
+<p>Bitbucket allows you to track changes to your code, keep tabs on work th=
+at needs to be done, and allows you to collaborate with others.</p>
+<p>And we have just the thing to familiarize yourself with Bitbucket. Check=
+ out our handy tutorial and get started!</p>
+            </td>
+        </tr>
+        <!-- start CTA -->
+        <tr>
+            <td valign=3D"top" align=3D"center">
+                <table border=3D"0" cellspacing=3D"0" cellpadding=3D"0" ali=
+gn=3D"center" style=3D"margin-top: 20px">
+                    <tr>
+                        <td align=3D"center" style=3D"border-radius:3px;bac=
+kground-color:#0052CC;height:40px; padding:0px 8px; color: #FFFFFF">
+                            <a href=3D"https://link.engagement.atlassian.co=
+m/wf/click?upn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqQh92g9UZX194=
+PLEqJdeUXvefnjDA90bUt0bdrlE5OAAuNfOdMK1ZZ0pwuEtr-2BNJBVtR1oe4YGDwCAKgUm6Uib=
+ww14Ce1IFHvOBb9cqy9dk7-2BmzIkOhdlksR-2BMEbsNkA4WubXF0mvOEg7SJKV6ZAb5PoxZrlk=
+Giy1-2ByumCTSj2SKQC-2F7d9Yaou1UCw2yZtedUY-3D_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7B=
+X2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BT=
+zf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7N=
+r57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZ=
+BIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-=
+2BPBhbQWIuEDzr4BJLR65zGfIYgLM-2Bg1mBxLaAIbeOfNoZ-2Byg-2FvuT3rABy4n3duRPrFZ8=
+ykkuZljPZv4ekFJXZHWgvxQjIiLmM7X9iuCB6EEXk6WbGkxwH6oKIyfkyMIzSBAoXnWD-2FbtQF=
+XqaSPkqK-2FGEPyDdXcdQwa5jF2l-2F1TXvePy-2FS0aHUdyAwFJoFMWzjD-2FDgQtUI9QB09Fh=
+tVk39" target=3D"_blank" style=3D"border:1px solid #0052CC;  display:inline=
+-block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','No=
+to Sans','Ubuntu','Droid Sans','Helvetica Neue',sans-serif;font-size:14px;c=
+olor:#ffffff;text-decoration:none;border-radius:3px;line-height:32px;letter=
+-spacing: normal;">
+                                <!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![end=
+if]-->Get started<!--[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;<![endif]-->
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!-- end CTA -->
+        <!-- end body module -->
+        <!-- start footer module -->
+        <tr>
+            <td valign=3D"top" style=3D"padding-top:30px;font-family:-apple=
+-system,BlinkMacSystemFont,'Segoe UI','Roboto','Noto Sans','Ubuntu','Droid =
+Sans','Helvetica Neue',sans-serif;font-size:12px;line-height:24px;color:#5E=
+6C84;text-align:center;" align=3D"center">
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJ1ZWNgZrxC8p-2FsCpIboou1hnbV7Coxns-2BtO-2BLvS6=
+YYF-2B-2FRKTC3ZrkJecITax3oIsh7lsgPU5oOMsOrMHf3Ro0st32SVcywrI7YcGQHjRZkbsTK1=
+w7Mij2TPXQKCAdi7CotnaMsSmNNR2ghsojFs6RzRNtKzc9h2GcDV5wnfMLlrNaJxPgvTPCkAGPO=
+q0r3afUGVRLdFDsPAbhbdMWjUniqu4plidoPboWVFSQqkg90-2Fn_ZsMHcbOt6Ev5dENFMFc72u=
+q9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetY=
+C9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC=
+5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-=
+2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0=
+Meh-2FH-2BPBhbQWIuEDzr4BJLR65z9yZk3Am0X79t9GfIYLMlYH3Rg98crI2gLX8BJaCnhhYg0=
+FnqfA-2F3PPRzYxnMbLeVAL9CrxtbvIyKR8nlwlSnZ8eY8qxBnBXq3B2LwSTAKWoWKIA-2BqpeQ=
+YaF02TKt-2B9-2Fb4uucMD7FSwgqgKxpPbNNoC4Kmie5Lk7UGzgfl5tU-2BGPphVvlWRVHzOT13=
+U2cIzHG" target=3D"_blank" style=3D"text-decoration:none; color:#5E6C84" >U=
+nsubscribe</a>  &bull;
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqSDvRo9nyGBrNkPkMRVuDV-2B=
+M97GKaFhDWFtx4FsSKXMx6dANOmKzEEkl1oMCnItti4ohxnf5QoeLhjLHMIoVWahOFbsoZIk8Mg=
+rAgtfS7cxbw-3D-3D_ZsMHcbOt6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5i=
+PK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1=
+dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-=
+2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHil=
+c83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65z-2B-2=
+B9CcwdhnxEojPuhBB5dE4eAKXrm6Qdp1XPFLL-2FvAXLij0n3gTzRJYR5bbaKkvmHSk5oxY0Fk1=
+hOMIqCGDY6ucFpinHVg8X3zpxwolQ6PlhZWA3IRQ3U-2FmT6dTCdw0-2FKPdx5D02epkupDaC-2=
+F-2Bri8emNItnkhjCwFuY1pRZhIf9opNrGAG4dsfDbL-2B0ISyzvo" style=3D"text-decora=
+tion:none; color:#5E6C84" alias=3D"privacy policy">Privacy Policy</a> &bull;
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqSqrlDIfZfmOaDcI50cNAeYbU=
+xkNwe9dXl6-2FhN8W8MhEyzc5bBSFxeyNcEL7wFnMZxKxExC9zw8ASoi3NwQCJzh_ZsMHcbOt6E=
+v5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oil=
+Htw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJ=
+AzRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj=
+-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0=
+YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65zlF2xjLdWhTrxXdj4bsLAHKOk6KwNAzuDf=
+MPmYoBYkxc-2BiMJkUpWYJZhnlcYAyC40AqZCj-2B95XlX4iHha-2BKgKqTOv-2Bh8was0LXOAH=
+CYOE87ILIpAHA38V1K0arzzyJ6lvz5IbHszPnIvX9WVpFWAofG4iHOhuRZ80s1oSvlONDMvyxJ1=
+Y-2BayEPQW5I1Ho6ADk" style=3D"text-decoration:none; color:#5E6C84" alias=3D=
+"contact us">Contact us</a> &bull;
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqTTsF1ZLJmpBJGmoP-2B5tOwS=
+lINE7yz2XTszePsNwBdJzGfAxpgLbK8Mr1aHm6cn6uQyXE-2BJnhVS-2FRIDHDPvogAX_ZsMHcb=
+Ot6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp=
+1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-=
+2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy=
+-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0Pk=
+L8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65zv3Ur8E9dsorSUh1-2B6nfykN-2BmS=
+v1S2DEkkVdD3sRC75O2a7KBV-2BmTHjbiwbczKTI337HA6aGj5J8yf-2BDsCEuBZKGtG8eA9SiW=
+Jgd4FzFKnIJR92JwjzNhR1kGkr041GGikBb-2FPR1GpF9kGoMJDBiYEqPUtNG-2BaWuDQSghKV8=
+L3g1cT0kgbHi-2BhKy3wVk2aSsb" style=3D"text-decoration:none; color:#5E6C84" =
+alias=3D"blog">Read our blog</a> &bull;
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJ-2Br4FVJEUMEHyQqbhfLI10FagaIqu22hQxwIdflrZESg=
+v99RpfiXL4ql4N3vp3OYIMTB5DGRkw0BPAqL7-2Bx9gTbndK7ojkki49EM4-2Bq2hIVZ_ZsMHcb=
+Ot6Ev5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp=
+1oilHtw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-=
+2FTJAzRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy=
+-2Bj-2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0Pk=
+L8g0YOCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65zJTYaaHQsJB-2BLi0OrLZKZ4huny2p=
+X7-2BNXg932I5pZhMbT-2FnYiFJbae-2BMoRjG9XknLL-2B8IJaizeU6CXJ-2BhNz1RoKmZirKU=
+Ya7MCw81GpqRL4AM04rjgDpVv-2B3ffeX3enFAhyJ50nqkmDgiOmxmdUFv1J0tNFNoaNBLDiZMY=
+Z-2FTdioEl9L-2F3Gcfx7WCA-2F5cafsw" style=3D"text-decoration:none; color:#5E=
+6C84" alias=3D"twitter">Follow on Twitter</a>
+            </td>
+        </tr>
+        <tr>
+            <td valign=3D"top" style=3D"font-family:-apple-system,BlinkMacS=
+ystemFont,'Segoe UI','Roboto','Noto Sans','Ubuntu','Droid Sans','Helvetica =
+Neue',sans-serif;font-size:12px;line-height:24px;color:#5E6C84;text-align:c=
+enter;" align=3D"center">
+                Copyright 2018 Atlassian Pty Ltd. All rights reserved. We a=
+re located at <a href=3D"" style=3D"text-decoration:none;color:#5E6C84;bord=
+er:none;">341 George Street, Sydney, NSW, 2000, Australia</a>
+            </td>
+        </tr>
+        <tr valign=3D"top">
+            <td align=3D"center" style=3D"padding-top:10px; padding-bottom:=
+30px;">
+                <a href=3D"https://link.engagement.atlassian.com/wf/click?u=
+pn=3DZsjHSwcsvvpXC-2Fnj-2FhgAJzwkejqKp5MrhSn7LHCgrqSjvOkxqymLfFaQs-2BK-2BQE=
+-2Fbz6lP-2FBCtFwIEOQbK5Ml5Qyp8-2BOQJ97FU3aTE-2Bt25Rn8-3D_ZsMHcbOt6Ev5dENFMF=
+c72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilHtw6LHaZ=
+uetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJAzRz1-2B=
+i0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-2BZaWMy=
+mwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0YOCXuiW-=
+2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65zxNxz-2FShTmLc-2BbQQvbAZ31OiRU-2Fyj3NgG8ST=
+ur3vx0s-2BuzRGo2W-2BeJi6NUEbPKiUwUBcPK7ETs6Nux80jbaVXMCavw9bnGJC2uwEtyT0eGw=
+3lOZM7IyEmOwQGJz-2FyvJRNiZUtU6fLyjsfV95iL5jQSxixT3-2FL4GgI6FGTUYUxOM-2BVjUp=
+qh2EwPg5LQ3jR3vmw">
+                    <img src=3D"https://aes-artifacts--cdn.us-east-1.prod.p=
+ublic.atl-paas.net/hashed/w0nfUVogWcPZZ9-70HwD15NtmivmDSyi_gKiY6Ol040/Atlas=
+sian-horizontal-neutral@2x-rgb.png" width=3D"120" border=3D"0" alt=3D"Atlas=
+sian" style=3D"display:block;">
+                </a>
+            </td>
+        </tr>
+    </table>
+    <!-- end footer module -->
+</td>
+</tr>
+</table>
+
+<img src=3D"https://link.engagement.atlassian.com/wf/open?upn=3DZsMHcbOt6Ev=
+5dENFMFc72uq9gJOf7BX2KQO6SRRNzswzI1A1N-2FgYX5iPK5bSSZYGv1o-2BtBhAIHxvp1oilH=
+tw6LHaZuetYC9nO-2BTzf3B1tRET2DBAPksKMp5gauZYu1dxlmQ-2FzeqL7r8v-2BarhS-2FTJA=
+zRz1-2Bi0LC5fhDAG7Nr57HLEqGccanmabKVLxg8xSIS0-2BEBqxT412AoatxpOox-2FBy-2Bj-=
+2BZaWMymwG-2FJ-2FdZBIWSLeDBeXj1sUS46PFNrhpUHilc83oTQUp01kfvBtW270LQ0PkL8g0Y=
+OCXuiW-2BN0Meh-2FH-2BPBhbQWIuEDzr4BJLR65z8nZdGnygkHwE2UTEMNRHSR17Ov7BFa554A=
+xjoVDGzx8mlS6IcJ5jrwWh69A7088kigj6GEdYM7OSAIhNN9T5VLY-2BPJs2h20sy5OtgZ6Zef-=
+2FlCTBVwfpKf63CgMvvrwkGVSpYhAFBlpa-2FLbvGhbPkhvHOgOcPR2ALKPmq4f5kCJwH4QRD5z=
+7WCXQzbkvuXYsH" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"hei=
+ght:1px !important;width:1px !important;border-width:0 !important;margin-to=
+p:0 !important;margin-bottom:0 !important;margin-right:0 !important;margin-=
+left:0 !important;padding-top:0 !important;padding-bottom:0 !important;padd=
+ing-right:0 !important;padding-left:0 !important;"/>
+</body>
+</html>
+
+--e8ccd5aa1fff162d7ff356167bcb4c2f40a0f74e542914e9eeb38fcc0fb4--

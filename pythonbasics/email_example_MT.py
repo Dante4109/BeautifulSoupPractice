@@ -35,12 +35,14 @@ client.close()
 number_of_chunks = 10
 chunk_size = 10
 
-with concurrent.futures.ThreadPoolExecutor() as executor:
+secs = [1, 2]
+
+with concurrent.futures.ThreadPoolExecutor(2) as executor:
 
     tasks = []
 
     for i in range(number_of_chunks):
         chunk = ids[i*chunk_size:(i+1)*chunk_size]
-        tasks.append(executor.submit(download_emails, chunk))
+        tasks.append(executor.map(download_emails(ids)))
 finish = time.perf_counter()
 print(f'Finished in {round(finish-start, 2)} second(s)')
