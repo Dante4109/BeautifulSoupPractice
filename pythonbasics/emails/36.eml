@@ -1,0 +1,161 @@
+Delivered-To: smtpsender4109@gmail.com
+Received: by 2002:ac0:9643:0:0:0:0:0 with SMTP id k3csp4530150imc;
+        Mon, 3 Jun 2019 10:12:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwd06o5jzIndfZwm2CYFr1ySQouQy512MnromEyd7FdgXJqjTFhVKxwVGy5CmJFgjflrzFE
+X-Received: by 2002:ad4:5426:: with SMTP id g6mr709714qvt.132.1559581939432;
+        Mon, 03 Jun 2019 10:12:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559581939; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FsnDFYqNZHtmTMkEko5HLWjwfn171QwwIeL1EDaBS7wKhg3v9AfKAD3X9LbiC5XuHO
+         EIB6r0F65Gtq8BigtGJbMD/ue5lWNIFzI9S6vxS7DpGi7XmvrZTszyw/U+J9ea8ScMD6
+         jogjNaUUCVvT73nlEy8WgcPA9b43aZgV1aYMxnWaOHMy/qpcXbcXVejN0/Cja8l4AtUp
+         6iyMn1liLVBceMytipyU73loB/Psu5ONDk2U8BJj7Hys1onlJkxJGg2GcDvS79DSMEfl
+         RtVGlTnSTFMGO82XfoSTdQLc8VgyoS5qoB01F9Dd237cbdb3JzTPLGmfqcnavRFoZMVU
+         Zvvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature;
+        bh=zt4ijSsnA/MlXcgEePRocxZ2hfiRlhAWNWnMqodmqPI=;
+        b=WyfJkd8mwCfprwBmomNW9CXiBi+ZwsaTi1nr6Mjh3TSI2i2N4mdyL8apUhgmBK1Imd
+         4ENbsrOmRMrqQabiC6oAvcQ8ZsGqvnA/3lxR2hhJTHaES/+RCi1uL7umKo5bWHS2A+QG
+         U3MjfdVWRAUYLNhD3KCXA9K13x9bxwFrX5N8D/B3k1DwCB/xSK/2Dx0J0m2eYcaVBbMl
+         igPPJhBmG1/sJQqk5nHIrlviBRb+zLxvxR0ZvwBOklyRHYBL02SDZcq7PV8MPu+5rmyI
+         9ZxkMhDSDpg24nliSpdrNp/erPsTEjBLxwr0CiWQYMw24d21DmnhbVWfb6nD6/OlKoZ/
+         jsGQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@optum.com header.s=dk.sep2016.2048 header.b=QDxCWI8q;
+       spf=pass (google.com: domain of noreply_healthid@optum.com designates 149.111.205.78 as permitted sender) smtp.mailfrom=noreply_healthid@optum.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=optum.com
+Return-Path: <noreply_healthid@optum.com>
+Received: from mail325.commmailsvcs.com (mail325.commmailsvcs.com. [149.111.205.78])
+        by mx.google.com with ESMTPS id c32si9975334qta.104.2019.06.03.10.12.18
+        for <smtpsender4109@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 03 Jun 2019 10:12:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply_healthid@optum.com designates 149.111.205.78 as permitted sender) client-ip=149.111.205.78;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@optum.com header.s=dk.sep2016.2048 header.b=QDxCWI8q;
+       spf=pass (google.com: domain of noreply_healthid@optum.com designates 149.111.205.78 as permitted sender) smtp.mailfrom=noreply_healthid@optum.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=optum.com
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=optum.com; i=@optum.com; q=dns/txt;
+  s=dk.sep2016.2048; t=1559581939;
+  h=date:from:to:message-id:subject:mime-version:
+   content-transfer-encoding;
+  bh=z0ckOqZuz1Bkbuz4VJvq2UEa6LZH9+N0LfkDND8IvHA=;
+  b=QDxCWI8qAOVq/aLMPei4QRfMrMNGlqwwj+xv9ivyDbFwqR4jJyR+YmzG
+   t/nKbfUwhUufW97y3wIE5EMR3hUBHDlzm5kaTnikmCDTZ+d94ac/jv5m9
+   U/tWoX0MvmLaw1Kf4dDpUYGGIKGzY7RbrXEf3CVbf/EibKZ0rzgI6h9aw
+   lWHGCklJXlQVrqxgRzCjIHXx9xuykvsaiqcs0PNrnFV6gm4W7IjI/kj5+
+   qL7+PS5Zv+1yfiGMxz7wvZUswCTsHXP76MorJYo4/ftmdzSh7o1SQM/EK
+   jTma62DeoPVyz3oLHjA+RQArlSOnhlC9hq9KWV9Xdr5Xzf9syxf7z38cM
+   w==;
+X-IronPort-AV: E=Sophos;i="5.60,547,1549951200"; 
+   d="scan'208,217";a="19529631"
+Received: from unknown (HELO apsrp3688.uhc.com) ([10.87.205.42])
+  by mail325.commmailsvcs.com with ESMTP; 03 Jun 2019 12:12:17 -0500
+Received: from apsrp3688.uhc.com (localhost [127.0.0.1])
+	by apsrp3688.uhc.com (8.14.4/8.14.4) with ESMTP id x53HCHuC015472
+	for <smtpsender4109@gmail.com>; Mon, 3 Jun 2019 12:12:17 -0500
+Date: Mon, 3 Jun 2019 12:12:17 -0500 (CDT)
+From: noreply_healthid@optum.com
+To: smtpsender4109@gmail.com
+Message-ID: <-1168817512.127658.1559581937803.JavaMail.wsuser@apsrp3688.uhc.com>
+Subject: Your Optum ID account information
+MIME-Version: 1.0
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Your Optum ID account information
+    </title>
+    <style type="text/css">
+        .textRegular
+        {
+            color:#000;
+            font-family:"Arial Regular","Arial";
+            font-size:13px;
+        }
+
+        .textRegularBold
+        {
+            font-family:"Arial Regular","Arial";
+            font-size:13px;
+            font-weight:bold;
+        }
+
+        .textTitle
+        {
+            color:#C36121;
+            font-family:"Arial Bold","Arial";
+            font-size:16px;
+            font-weight:bold;
+        }
+
+        .tableCellBorder
+        {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 0px;
+        }
+
+        .tableWhole
+        {
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+            border-collapse:collapse;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="content" role="main">
+
+
+        
+    
+
+    
+
+
+<table style="border: 0px; padding: 0px; margin: 0px; border-collapse:collapse; font-family: 'Arial Regular', 'Arial'; font-size: 13px;" role="presentation">
+    <tr>
+        <td style="border: 1px solid #ccc; padding: 15px; margin: 0px;">
+        <img  alt="MAHealthConnector" src="https://healthid.optum.com/tb/services/rest/rp/rpapplogo?rpid=MHC28623">
+        <h1 style="font-size: 16px; color: #924719; font-weight: bold; font-family: 'Arial Bold' , 'Arial';margin-top: 0px !important; margin-bottom: 7px !important;" id="emailHeading"><br/>Confirm Your Password Reset<br/></h1>
+        
+           
+          
+
+
+
+<p style="color: #000; font-family: 'Arial Regular', 'Arial'; font-size: 13px;margin-top: 0px !important; margin-bottom: 7px !important;" id="emailResetAccountRequest">We have received a request from this email address to reset your Optum ID password.
+</p>
+<p style="color: #000; font-family: 'Arial Regular', 'Arial'; font-size: 13px;margin-top: 0px !important; margin-bottom: 7px !important;" id="emailResetAccountBody">Click on the link below or copy and paste the link address into your browser to confirm that you wish to reset your password.
+</p>
+
+<a style="font-family: 'Arial Regular', 'Arial'; font-size: 16px; font-weight: bold; display:block; padding: 10px 0;margin: 0 0 26px;" href="https://healthid.optum.com:443/tb/link/reset-password?relyingAppId=MHC28623&TARGET=https%3A%2F%2Fmahealthconnector.optum.com%2Findividual%2Flogin&authCode=576d3f66-ef7c-4298-8949-3922e73566d4" id="emailResetAccountConfirm">Confirm Password Reset
+</a>
+
+<p style="color: #000; font-family: 'Arial Regular', 'Arial'; font-size: 13px;margin-top: 0px !important; margin-bottom: 7px !important;" id="urlResetAccount">https://healthid.optum.com:443/tb/link/reset-password?relyingAppId=MHC28623&TARGET=https%3A%2F%2Fmahealthconnector.optum.com%2Findividual%2Flogin&authCode=576d3f66-ef7c-4298-8949-3922e73566d4</p>
+
+<p style="color: #000; font-family: 'Arial Regular', 'Arial'; font-size: 13px;margin:0;display: inline;" id="emailResetAccountHelpText">Confirming your password reset helps us keep your Optum ID secure. If you did not make this request or if you think you received this email in error, contact us at 1(877)623-6765 .
+</p>
+
+</div>
+<div role="contentinfo">
+<p style="margin: 26px 0 0;" id="emailThank">Thank you,
+</p>
+<p style="margin:0;" id="companyName">Optum ID</p>
+</div>
+</td>
+</tr>
+
+</table>
+</body>
+</html>

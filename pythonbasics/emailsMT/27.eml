@@ -1,0 +1,527 @@
+Delivered-To: smtpsender4109@gmail.com
+Received: by 2002:ac0:b084:0:0:0:0:0 with SMTP id l4csp96112imc;
+        Thu, 6 Dec 2018 19:54:44 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XhPsJU62palC/8X2VDhkA9IRoYcURkE5tj9nvnZUHBj1F0ubiWgUF2e2eVJSIHd5FBJMAe
+X-Received: by 2002:a0d:f603:: with SMTP id g3mr584961ywf.75.1544154884166;
+        Thu, 06 Dec 2018 19:54:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544154884; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sOsqBF+x7xfwcL0TcG9BkC5pniIUECZ3elMVt3vfCLroZlPimUXUfb8D6n+J+3C6iW
+         /t/tT5O3daNKEtDIMzwUvNR20j6NT0dETPdGJx9za5lv66B77d9GgiSveOKfOXogPk0i
+         4wFCnJYY7qcMGIpJdliQ4FCmBlxVmKD+rgBKLvHYwNz/jjOuaYlAlQqLxI5SKUIfUAU6
+         WP/DUsqBKaAJf38aVCmuwoCFwHzI5kcOurUPySPFdICZL0KPo64A1moTMwWUWHGaa9vH
+         HM7i62tuhWrbbfdDcG64Dsw0kGP4m1ncG92r4S3hy4WRo/LNW8TTYwDLpjfcg4F/W3Kw
+         DB/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:from:to:message-id
+         :sender:date:dkim-signature:dkim-signature;
+        bh=JLh+ix9/4nVLs+RrDwvAWHAhnvwyk8OLuktWUVKRmsM=;
+        b=cUVHAFvqAtHBaxYKCOd9w1YYxBc2YoXvXNn+bH2GDOUblmgYU4wYnH6Oem96XJdZPa
+         v4+ojSQIAW3weG9vWhOiRH41RKbJPBNPzpfI+tjbIdHLo46SBO2KW8dTFCOg1I0WgD4i
+         9Z/epAb2kc0D3lultg14JDWe8HeaRMQvbj+xHXhcgQCB7EyZlfGjWYDhSNlKETYxeTKz
+         2lhzxnBqTdGU74k1+CwxoiDagmlx1m6tr2C5KbsqKUtsYITFNKay5hozksFdS/asIrYA
+         L64RzydXa1FhVfw6EHwAW0K7kRMiZ144RSToyRsdFiaBR4h4GbAidVMbfuJXHNGGUuMO
+         QBdA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mailgun.discordapp.com header.s=k1 header.b=r+m30WLo;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=N3OWdGi2;
+       spf=pass (google.com: domain of bounce+64ad3d.4e4d1b-smtpsender4109=gmail.com@mailgun.discordapp.com designates 166.78.68.137 as permitted sender) smtp.mailfrom="bounce+64ad3d.4e4d1b-smtpsender4109=gmail.com@mailgun.discordapp.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=discordapp.com
+Return-Path: <bounce+64ad3d.4e4d1b-smtpsender4109=gmail.com@mailgun.discordapp.com>
+Received: from mail1.static.discordapp.com (mail1.static.discordapp.com. [166.78.68.137])
+        by mx.google.com with UTF8SMTPS id r17si1445620ybc.190.2018.12.06.19.54.43
+        for <smtpsender4109@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Dec 2018 19:54:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce+64ad3d.4e4d1b-smtpsender4109=gmail.com@mailgun.discordapp.com designates 166.78.68.137 as permitted sender) client-ip=166.78.68.137;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mailgun.discordapp.com header.s=k1 header.b=r+m30WLo;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=N3OWdGi2;
+       spf=pass (google.com: domain of bounce+64ad3d.4e4d1b-smtpsender4109=gmail.com@mailgun.discordapp.com designates 166.78.68.137 as permitted sender) smtp.mailfrom="bounce+64ad3d.4e4d1b-smtpsender4109=gmail.com@mailgun.discordapp.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=discordapp.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.discordapp.com;
+ q=dns/txt; s=k1; t=1544154883; h=Content-Transfer-Encoding:
+ Mime-Version: Content-Type: Subject: From: To: Message-Id: Sender:
+ Date: X-Feedback-Id; bh=JLh+ix9/4nVLs+RrDwvAWHAhnvwyk8OLuktWUVKRmsM=; b=r+m30WLo6GT/NRyb1KOrErU8LQKEtBFGr0QP4y0OevQWURAyvUI5XnL/xIBv6IFlT4K+w6Cv
+ O7SsuWZSzVKAMJQY+lIPW3+/nzS0/+2pz7iGr4zZYYxWyyJbRwNMP0YN9VRX+WqBMMOk81fm
+ AVxIV+7U1ycIN7C3sMWy45pAHxU=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg;
+ t=1544154883; h=Content-Transfer-Encoding: Mime-Version: Content-Type:
+ Subject: From: To: Message-Id: Sender: Date: X-Feedback-Id;
+ bh=JLh+ix9/4nVLs+RrDwvAWHAhnvwyk8OLuktWUVKRmsM=; b=N3OWdGi2O73mBIIeSRqgeqSZ4s/yPr2+vyPsNplkzVNvvXXP+jMrW4FbOCJHb+LJGkM2XWiw
+ c2O7uERVHvH15eni5e9cl2FdrhpSMFpqWTzpcpxwFviskIIHy7QwWE5dbiYNbe+qUSCFjeZD
+ BhoeSlJYL7j7E2RRgG22lpbLRfA=
+X-Feedback-Id: 57a8eb9363badc62b2acd225:mailgun
+X-Mailgun-Sending-Ip: 166.78.68.137
+X-Mailgun-Sid: WyI1YTlkZSIsICJzbXRwc2VuZGVyNDEwOUBnbWFpbC5jb20iLCAiNGU0ZDFiIl0=
+Received: by luna.mailgun.net with HTTP; Fri, 07 Dec 2018 03:54:43 +0000
+Date: Fri, 07 Dec 2018 03:54:43 +0000
+Sender: notifications=discordapp.com@mailgun.discordapp.com
+Message-Id: <20181207035443.1.8D9A1945C0ACD707@mailgun.discordapp.com>
+To: smtpsender4109@gmail.com
+From: Discord <notifications@discordapp.com>
+Subject: MEE6 mentioned you in THE R3ZOLUTION
+Content-Type: text/html; charset="utf-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+<head>
+  <title></title>
+  <!--[if !mso]><!-- -->
+  <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+  <!--<![endif]-->
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css">
+  #outlook a { padding: 0; }
+  .ReadMsgBody { width: 100%; }
+  .ExternalClass { width: 100%; }
+  .ExternalClass * { line-height:100%; }
+  body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-si=
+ze-adjust: 100%; }
+  table, td { border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; }
+  img { border: 0; height: auto; line-height: 100%; outline: none; text-dec=
+oration: none; -ms-interpolation-mode: bicubic; }
+  p { display: block; margin: 13px 0; }
+</style>
+<!--[if !mso]><!-->
+<style type=3D"text/css">
+  @media only screen and (max-width:480px) {
+    @-ms-viewport { width:320px; }
+    @viewport { width:320px; }
+  }
+</style>
+<!--<![endif]-->
+<!--[if mso]>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+<!--[if lte mso 11]>
+<style type=3D"text/css">
+  .outlook-group-fix {
+    width:100% !important;
+  }
+</style>
+<![endif]-->
+<style type=3D"text/css">
+  @media only screen and (min-width:480px) {
+    .mj-column-per-30, * [aria-labelledby=3D"mj-column-per-30"] { width:30%=
+!important; }
+.mj-column-per-70, * [aria-labelledby=3D"mj-column-per-70"] { width:70%!imp=
+ortant; }
+.mj-column-per-100, * [aria-labelledby=3D"mj-column-per-100"] { width:100%!=
+important; }
+  }
+</style>
+</head>
+<body style=3D"background: #F9F9F9;">
+  <div style=3D"background-color:#F9F9F9;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"font-size:1px;line-height:20px;">&nbsp;</di=
+v><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0 auto;max-width:640px;background:#f=
+fffff;box-shadow:0px 1px 5px rgba(0,0,0,0.1);border-radius:4px;overflow:hid=
+den;"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"font-size:0px;wid=
+th:100%;background:#ffffff;" align=3D"center" border=3D"0"><tbody><tr><td s=
+tyle=3D"text-align:center;vertical-align:top;font-size:0px;padding:20px;"><=
+!--[if mso | IE]>
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td style=
+=3D"vertical-align:top;width:192px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-30" class=3D"mj-col=
+umn-per-30 outlook-group-fix" style=3D"vertical-align:top;display:inline-bl=
+ock;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+20px;" align=3D"center"><table role=3D"presentation" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"border-collapse:collapse;border-spacing:0px;" align=
+=3D"center" border=3D"0"><tbody><tr><td style=3D"width:152px;"><img alt=3D"=
+" title=3D"" height=3D"auto" src=3D"https://cdn.discordapp.com/email_assets=
+/20c4ce2e56fd303df955c35d6cd6bc1a.png" style=3D"border:none;border-radius:;=
+display:block;outline:none;text-decoration:none;width:100%;height:auto;" wi=
+dth=3D"152"></td></tr></tbody></table></td></tr></tbody></table></div><!--[=
+if mso | IE]>
+      </td><td style=3D"vertical-align:top;width:448px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-70" class=3D"mj-col=
+umn-per-70 outlook-group-fix" style=3D"vertical-align:top;display:inline-bl=
+ock;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+20px 20px 0px;" align=3D"left"><div style=3D"cursor:auto;color:#F39C12;font=
+-family:Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-seri=
+f;font-size:24px;font-weight:500;line-height:34px;text-align:left;">Want pu=
+sh notifications instead?</div></td></tr><tr><td style=3D"word-break:break-=
+word;font-size:0px;padding:10px 20px 20px 20px;" align=3D"left"><div style=
+=3D"cursor:auto;color:#737F8D;font-family:Whitney, Helvetica Neue, Helvetic=
+a, Arial, Lucida Grande, sans-serif;font-size:16px;line-height:24px;text-al=
+ign:left;">
+      <p><a href=3D"https://discordapp.com/api/track/479755476280541204/5a9=
+a3d78-bfc3-4c64-a05a-dade8e6aaca7?properties=3DeyJzdWJqZWN0X3R5cGUiOiAiZ3Vp=
+bGRfbWVudGlvbiIsICJlbWFpbF90eXBlIjogIm1pc3NlZF9tZXNzYWdlcyIsICJhY3Rpb25fdHl=
+wZSI6ICJkb3dubG9hZF9tb2JpbGUifQ%3D%3D&amp;redirect_to=3Dhttps%3A%2F%2Fdisco=
+rdapp.com%2Fapi%2Fdownload%2Fmobile" style=3D"font-family: Whitney, Helveti=
+ca Neue, Helvetica, Arial, Lucida Grande, sans-serif;color: #7289DA;">Downl=
+oad</a> Discord on your phone to keep chatting while AFK, or <a href=3D"htt=
+ps://discordapp.com/disable-email-notifications?token=3DNDc5NzU1NDc2MjgwNTQ=
+xMjA0.DuuAgw.K69Z0iY-Ua4kwte42kdxfw4yWOc&amp;hash=3D5a9a3d78-bfc3-4c64-a05a=
+-dade8e6aaca7" style=3D"font-family: Whitney, Helvetica Neue, Helvetica, Ar=
+ial, Lucida Grande, sans-serif;color: #7289DA;">turn off</a> these notifica=
+tions now.</p>
+
+    </div></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0px auto;max-width:640px;background:=
+transparent;"><table role=3D"presentation" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"font-size:0px;width:100%;background:transparent;" align=3D"cen=
+ter" border=3D"0"><tbody><tr><td style=3D"text-align:center;vertical-align:=
+top;direction:ltr;font-size:0px;padding:0px;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td style=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;"><div s=
+tyle=3D"font-size:1px;line-height:12px;">&nbsp;</div></td></tr></tbody></ta=
+ble></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"max-width:640px;margin:0 auto;box-shadow:0p=
+x 1px 5px rgba(0,0,0,0.1);border-radius:4px;overflow:hidden"><div style=3D"=
+margin:0px auto;max-width:640px;background:#ffffff;"><table role=3D"present=
+ation" cellpadding=3D"0" cellspacing=3D"0" style=3D"font-size:0px;width:100=
+%;background:#ffffff;" align=3D"center" border=3D"0"><tbody><tr><td style=
+=3D"text-align:center;vertical-align:top;direction:ltr;font-size:0px;paddin=
+g:40px 40px 0px;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td style=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+0px;" align=3D"left"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"ce=
+llspacing:0px;color:#000;font-family:Whitney, Helvetica Neue, Helvetica, Ar=
+ial, Lucida Grande, sans-serif;font-size:13px;line-height:22px;table-layout=
+:auto;" width=3D"100%" border=3D"0">
+            <tr>
+              <td>
+                <div style=3D"color:#4f545c;font-size:20px;line-height:24px=
+">
+                  <span style=3D"font-weight: bold;">Hey FBI,</span>
+                </div>
+                <div style=3D"font-size:16px;line-height:22px;color:#737F8D=
+;margin-top:12px;">
+                  Discord was poppin off while you were away! Here&#39;s so=
+me highlights:
+                </div>
+              </td>
+              <td width=3D"78" valign=3D"top" align=3D"right">
+                <table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-=
+collapse:collapse;border-spacing:0px;" align=3D"center" border=3D"0">
+                  <tbody>
+                    <tr>
+                      <td style=3D"width:58px;height:48px">
+                        <img src=3D"https://cdn.discordapp.com/email_assets=
+/7167734eca95542eb10027aa14e9412f.png" width=3D"58" height=3D"48" style=3D"=
+border:none;display:block;outline:none;text-decoration:none;" alt=3D"">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0px auto;max-width:640px;background:=
+#ffffff;"><table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" =
+style=3D"font-size:0px;width:100%;background:#ffffff;" align=3D"center" bor=
+der=3D"0"><tbody><tr><td style=3D"text-align:center;vertical-align:top;dire=
+ction:ltr;font-size:0px;padding:20px 40px 0px;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td style=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+0px;"><p style=3D"font-size:1px;margin:0px auto;border-top:1px solid #f0f2f=
+4;width:100%;"></p><!--[if mso | IE]><table role=3D"presentation" align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"font-size=
+:1px;margin:0px auto;border-top:1px solid #f0f2f4;width:100%;" width=3D"640=
+"><tr><td style=3D"height:0;line-height:0;">&nbsp;</td></tr></table><![endi=
+f]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0px auto;max-width:640px;background:=
+#ffffff;"><table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" =
+style=3D"font-size:0px;width:100%;background:#ffffff;" align=3D"center" bor=
+der=3D"0"><tbody><tr><td style=3D"text-align:center;vertical-align:top;dire=
+ction:ltr;font-size:0px;padding:20px 40px 10px;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td style=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+0px;" align=3D"left"><div style=3D"cursor:auto;color:#7289DA;font-family:Wh=
+itney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-siz=
+e:16px;line-height:15px;text-align:left;">
+      <strong>
+        <a href=3D"https://discordapp.com/api/track/479755476280541204/5a9a=
+3d78-bfc3-4c64-a05a-dade8e6aaca7?properties=3DeyJ0YXJnZXRfY2hhbm5lbF9pZCI6I=
+DM4ODcyMTAwMjA5MzIxNTc0NSwgInN1YmplY3RfdHlwZSI6ICJndWlsZF9tZW50aW9uIiwgImVt=
+YWlsX3R5cGUiOiAibWlzc2VkX21lc3NhZ2VzIiwgInRhcmdldF9ndWlsZF9pZCI6IDM4ODM2Njc=
+yODgyNjA2MDgwMCwgImFjdGlvbl90eXBlIjogIm9wZW5fY2hhbm5lbCIsICJ0YXJnZXQiOiAiY2=
+hhbm5lbCJ9&amp;redirect_to=3Dhttps%3A%2F%2Fdiscordapp.com%2Fchannels%2F3883=
+66728826060800%2F388721002093215745" target=3D"_blank" style=3D"color: #728=
+9DA; text-decoration: none">
+        #now-live
+        </a><span style=3D"color: #737F8D; font-size: 14px">(THE R3ZOLUTION=
+)</span></strong>
+    </div></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0px auto;max-width:640px;background:=
+#ffffff;"><table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" =
+style=3D"font-size:0px;width:100%;background:#ffffff;" align=3D"center" bor=
+der=3D"0"><tbody><tr><td style=3D"text-align:center;vertical-align:top;dire=
+ction:ltr;font-size:0px;padding:0px 40px 10px;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td style=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+0px;" align=3D"left"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"ce=
+llspacing:0px;color:#000;font-family:Whitney, Helvetica Neue, Helvetica, Ar=
+ial, Lucida Grande, sans-serif;font-size:13px;line-height:22px;table-layout=
+:auto;" width=3D"100%" border=3D"0">
+      <tr>
+        <td width=3D"40" valign=3D"top">
+          <table cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collap=
+se:collapse;border-spacing:0px;" align=3D"center" border=3D"0">
+            <tbody>
+              <tr>
+                <td style=3D"width:40px;">
+                  <img src=3D"https://cdn.discordapp.com/avatars/1599858704=
+58322944/b50adff099924dd5e6b72d13f77eb9d7.jpg" width=3D"40" height=3D"40" s=
+tyle=3D"border:none;display:block;outline:none;text-decoration:none;border-=
+radius:50%;">
+                 =20
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td width=3D"20">
+          &nbsp;
+        </td>
+        <td valign=3D"top">
+          <div style=3D"color:#2D3136;font-size:16px;line-height:20px">MEE6=
+</div>
+          <div style=3D"color:#737F8D;font-size:15px;line-height:17px;margi=
+n-top:3px;">
+             Hey @everyone, GamerR3Z is now live on https://www.twitch.tv/g=
+amerr3z ! Go check it out!
+          </div>
+        </td>
+      </tr>
+    </table></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0px auto;max-width:640px;background:=
+#ffffff;"><table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" =
+style=3D"font-size:0px;width:100%;background:#ffffff;" align=3D"center" bor=
+der=3D"0"><tbody><tr><td style=3D"text-align:center;vertical-align:top;dire=
+ction:ltr;font-size:0px;padding:20px 40px 0px;"></td></tr></tbody></table><=
+/div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--></div><div style=3D"margin:0px auto;max-width:640px;backg=
+round:transparent;"><table role=3D"presentation" cellpadding=3D"0" cellspac=
+ing=3D"0" style=3D"font-size:0px;width:100%;background:transparent;" align=
+=3D"center" border=3D"0"><tbody><tr><td style=3D"text-align:center;vertical=
+-align:top;direction:ltr;font-size:0px;padding:0px;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td style=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;"><div s=
+tyle=3D"font-size:1px;line-height:12px;">&nbsp;</div></td></tr></tbody></ta=
+ble></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0 auto;max-width:640px;background:#f=
+fffff;box-shadow:0px 1px 5px rgba(0,0,0,0.1);border-radius:4px;overflow:hid=
+den;"><table cellpadding=3D"0" cellspacing=3D"0" style=3D"font-size:0px;wid=
+th:100%;background:#ffffff;" align=3D"center" border=3D"0"><tbody><tr><td s=
+tyle=3D"text-align:center;vertical-align:top;font-size:0px;padding:0px;"><!=
+--[if mso | IE]>
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td style=
+=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+30px 40px 0px 40px;" align=3D"center"><div style=3D"cursor:auto;color:#43B5=
+81;font-family:Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sa=
+ns-serif;font-size:18px;font-weight:bold;line-height:16px;text-align:center=
+;">FUN FACT #21</div></td></tr><tr><td style=3D"word-break:break-word;font-=
+size:0px;padding:14px 40px 30px 40px;" align=3D"center"><div style=3D"curso=
+r:auto;color:#737F8D;font-family:Whitney, Helvetica Neue, Helvetica, Arial,=
+ Lucida Grande, sans-serif;font-size:16px;line-height:22px;text-align:cente=
+r;">
+        HAL Laboratory, the developer responsible for Kirby, Mother, and Su=
+per Smash Bros. series, was named HAL because each letter put them ahead of=
+ IBM.
+      </div></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]-->
+      <!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"640" align=3D"center" style=3D"width:640px;">
+        <tr>
+          <td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:e=
+xactly;">
+      <![endif]--><div style=3D"margin:0px auto;max-width:640px;background:=
+transparent;"><table role=3D"presentation" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"font-size:0px;width:100%;background:transparent;" align=3D"cen=
+ter" border=3D"0"><tbody><tr><td style=3D"text-align:center;vertical-align:=
+top;direction:ltr;font-size:0px;padding:20px 0px;"><!--[if mso | IE]>
+      <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td style=3D"vertical-align:top;width:640px;">
+      <![endif]--><div aria-labelledby=3D"mj-column-per-100" class=3D"mj-co=
+lumn-per-100 outlook-group-fix" style=3D"vertical-align:top;display:inline-=
+block;direction:ltr;font-size:13px;text-align:left;width:100%;"><table role=
+=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=
+=3D"0"><tbody><tr><td style=3D"word-break:break-word;font-size:0px;padding:=
+0px;" align=3D"center"><div style=3D"cursor:auto;color:#99AAB5;font-family:=
+Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-s=
+ize:12px;line-height:24px;text-align:center;">
+      Sent by Discord =E2=80=A2 <a href=3D"https://blog.discordapp.com/" st=
+yle=3D"color:#1EB0F4;text-decoration:none;">check our blog</a> =E2=80=A2 <a=
+ href=3D"https://twitter.com/discordapp" style=3D"color:#1EB0F4;text-decora=
+tion:none;">@discordapp</a>
+    </div></td></tr><tr><td style=3D"word-break:break-word;font-size:0px;pa=
+dding:0px;" align=3D"center"><div style=3D"cursor:auto;color:#99AAB5;font-f=
+amily:Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;=
+font-size:12px;line-height:24px;text-align:center;">
+      444 De Haro Street, Suite 200, San Francisco, CA 94107
+    </div></td></tr><tr><td style=3D"word-break:break-word;font-size:0px;pa=
+dding:0px;" align=3D"center"><div style=3D"cursor:auto;color:#99AAB5;font-f=
+amily:Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;=
+font-size:12px;line-height:24px;text-align:center;">
+        <a target=3D"_blank" rel=3D"noreferrer" href=3D"https://discordapp.=
+com/disable-email-notifications?token=3DNDc5NzU1NDc2MjgwNTQxMjA0.DuuAgw.K69=
+Z0iY-Ua4kwte42kdxfw4yWOc&amp;hash=3D5a9a3d78-bfc3-4c64-a05a-dade8e6aaca7" s=
+tyle=3D"font-weight:normal;color:#99AAB5">
+          unsubscribe
+        </a>
+      </div></td></tr><tr><td style=3D"word-break:break-word;font-size:0px;=
+padding:0px;" align=3D"left"><div style=3D"cursor:auto;color:#000000;font-f=
+amily:Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;=
+font-size:13px;line-height:22px;text-align:left;">
+        <img src=3D"https://discordapp.com/api/science/479755476280541204/5=
+a9a3d78-bfc3-4c64-a05a-dade8e6aaca7.gif?properties=3DeyJzdWJqZWN0X3R5cGUiOi=
+AiZ3VpbGRfbWVudGlvbiIsICJlbWFpbF90eXBlIjogIm1pc3NlZF9tZXNzYWdlcyJ9" width=
+=3D"1" height=3D"1">
+      </div></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>
+      </td></tr></table>
+      <![endif]--></div>
+<img width=3D"1px" height=3D"1px" alt=3D"" src=3D"http://email.mailgun.disc=
+ordapp.com/o/eJwVzEEOgyAQAMDXlCPZld0CBw5GP4IuWJKiBO3_qw-YkUCJBBdVwgDocAALho=
+mMRu1mP6InnmCcZgv2RVBj-W6_XUs516NLbE2vR1Wf8L6tEc42ooCxgsiJUcQtKXO0WfVw1quda=
+ZfUCcHf2fZsj_8DjYonBQ"></body>
+</html>

@@ -70,6 +70,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     for r in results:
         responseList.append(r)
 
+requests_session.close()
 finish = time.perf_counter()
 print(responseList)
 print("Total number of pages obtained: " + str(len(responseList)))

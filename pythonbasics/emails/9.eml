@@ -1,0 +1,223 @@
+Delivered-To: smtpsender4109@gmail.com
+Received: by 10.192.227.202 with SMTP id k10csp932784imp;
+        Fri, 27 Apr 2018 09:05:36 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqG3EisnSiVEj+JoRMaO5erPcm1llihXsUrLvVQmxugBOEl9eqfqxsOa5n2Uxw6fPlCEQ2T
+X-Received: by 2002:a0c:87a3:: with SMTP id 32-v6mr2563270qvj.171.1524845136522;
+        Fri, 27 Apr 2018 09:05:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524845136; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zCGP+qowAX9k0HwAJgJ5bzjRMeweyEKZcGDlf6BD3ZB9smCZN50Z3Tot5JwsItdZVG
+         8IC1XC8a+aXWWSqg0Te78G04bYp7eOggiKbv3HMZ8UMDPCxCN43ONvblFQNfOBBaQ7We
+         BrcrWdXWv9f9qreTGhjhoec/ebzBpSIxMhiKSoXKIXGIYiAxZKCd1mmYei7P/0SoBN0O
+         udpC/shJiBAt4PXIdIxABTWwhRfNbLKpFdJAN5/AvMSnES3x42Kq9Ug/0msdi/7Zr5Xe
+         nqACKtDHjMsLkfpwNizWg4E8CUDaUpkNGq22r0T6c3+pRQ7pqMcOS9GvNGvFP9FFAQrC
+         mEgg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=precedence:auto-submitted:message-id:date:to:from:subject
+         :mime-version:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=f+RKdvEB3Kk/vQk/AEnI3GkOt/TI48sOhcZRIvR1HtI=;
+        b=w2JEHuew7jTA7KeoQvMbsFH6RmQWOCPZRwaSj3UOY9JzzpFuYUDTTyywl8kMiD1jkO
+         ly+jgflNR3wqJLOTkORRSDsvBNdgDR+ABHwj82xeDxONA5EtN77cF1uMhyVKPbwWz6ME
+         U43f23G4Hc8cuhOmLkQQN7olJreOB3GqSoDltWXUdLDzR8jR0LHstM3NxheZ/nS4TF/6
+         SmbYF2yl0BDr+tpKAR3yiC7ODnV8Fu9DaCV53kd+GGH8aW1Qbs7tpsZqHWoNG17extzc
+         mFdOj5Y0vW0UDPk0DzPCzu3A+3yJPVVLZh6f0UiLTA2LG/kCFYvbv9yDvGTjYMDYegpT
+         K2mg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bitbucket.org header.s=s1 header.b=rnJIaald;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=gdtweOCG;
+       spf=pass (google.com: domain of bounces+2418806-de6d-smtpsender4109=gmail.com@em.bitbucket.org designates 167.89.38.188 as permitted sender) smtp.mailfrom=bounces+2418806-de6d-smtpsender4109=gmail.com@em.bitbucket.org
+Return-Path: <bounces+2418806-de6d-smtpsender4109=gmail.com@em.bitbucket.org>
+Received: from o6.em.bitbucket.org (o6.em.bitbucket.org. [167.89.38.188])
+        by mx.google.com with ESMTPS id f7-v6si645767qtp.226.2018.04.27.09.05.36
+        for <smtpsender4109@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Apr 2018 09:05:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2418806-de6d-smtpsender4109=gmail.com@em.bitbucket.org designates 167.89.38.188 as permitted sender) client-ip=167.89.38.188;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bitbucket.org header.s=s1 header.b=rnJIaald;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=gdtweOCG;
+       spf=pass (google.com: domain of bounces+2418806-de6d-smtpsender4109=gmail.com@em.bitbucket.org designates 167.89.38.188 as permitted sender) smtp.mailfrom=bounces+2418806-de6d-smtpsender4109=gmail.com@em.bitbucket.org
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=bitbucket.org; 
+	h=content-type:mime-version:subject:from:to; s=s1; 
+	bh=ZsszItytxsvq9HNQsHvC4M7w3Lo=; b=rnJIaaldEm+oIVJ3gNJ1lldAjH24S
+	KnpQkFz8h4Ce6CWSl4RGGuXlGQL8QnzUiaLtNf5hjO1hEegyJE1xNrAISyLsY/b7
+	uuBPcrFJpN5FRuT+ibBNSSTp/SHh8iQGXX/yuHwTapk6z7Q/dMU4H8tVdgizcNBJ
+	i9zUEYMysEVWVs=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=sendgrid.info; 
+	h=content-type:mime-version:subject:from:to:x-feedback-id; 
+	s=smtpapi; bh=ZsszItytxsvq9HNQsHvC4M7w3Lo=; b=gdtweOCGpFhU4M2sgb
+	Pi+Y4IIyYBjF06bywTnU+nUwtS74p0W0ThhBU28WVbAEjrlEHHggBLCTN4qcMbt0
+	E6ol2ImWYhe4jPD8hHEPW81p29Wuxpg5DG0amjrug3Du3tZ7K/gHa1+lU5ini71v
+	w1IiNSfzUo5hLkw8DOBw4hSX8=
+Received: by filter0656p1las1.sendgrid.net with SMTP id filter0656p1las1-32622-5AE34A4F-2
+        2018-04-27 16:05:35.118449373 +0000 UTC
+Received: from celery-worker-109.ash1.bb-inf.net (unknown [104.192.142.194])
+	by ismtpd0009p1iad2.sendgrid.net (SG) with ESMTP id BPULbm0URaKAnR9aJCIITA
+	for <smtpsender4109@gmail.com>; Fri, 27 Apr 2018 16:05:35.291 +0000 (UTC)
+Received: from celery-worker-109.ash1.bb-inf.net (localhost.localdomain [127.0.0.1])
+	by celery-worker-109.ash1.bb-inf.net (Postfix) with ESMTP id 016EB587E84
+	for <smtpsender4109@gmail.com>; Fri, 27 Apr 2018 16:05:35 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary="===============2220039003652409565=="
+MIME-Version: 1.0
+Subject: [Bitbucket] You have been given read access to sitesbycode/rt-bot
+From: "Patrick Hanford" <notifications-noreply@bitbucket.org>
+To: smtpsender4109@gmail.com
+Date: Fri, 27 Apr 2018 16:05:35 +0000 (UTC)
+Message-ID: <20180427160535.6357.7179@celery-worker-109.ash1.bb-inf.net>
+Auto-Submitted: auto-generated
+Precedence: bulk
+X-SG-EID: WhiNfCih/iEHnbCFVgB8S3qdAsaGNu+YeP87HDhygzhC3diSlZmx++XIua7xe/pCWH+FyN/U38LLFE
+ m4Mr0XtrZIIWt1/R5bzSlEiiMvm02EcZiAPxdJozJVSH7eg8k+6l4CMvBaJpZTY4/CmWjbgwdbg2fw
+ 5jlcDTVHjlcqJNzPn8S2XcVGNGZCi8f8/2CASk1eZpkbiwhXdRd0SAY5ZfDCdydmHd8j/+KMYbvZ7y
+ 60q/6nMYv+XX/GtmugDLwg
+X-Feedback-ID: 2418806:knLd82N00/PsdOp0+m9Bz+iVk1IkS5MOgt7LQoJm4LI=:knLd82N00/PsdOp0+m9Bz+iVk1IkS5MOgt7LQoJm4LI=:SG
+
+--===============2220039003652409565==
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+You may now access the repository source of sitesbycode/rt-bot on:
+
+https://bitbucket.org/sitesbycode/rt-bot
+
+--
+
+
+Disable notifications from your account settings:
+https://bitbucket.org/account/user/ProgrammerR3Z/
+
+--===============2220039003652409565==
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  </head>
+  <body style="font: 14px/1.4285714 Arial, sans-serif; color: #333;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tbody>
+        <tr>
+          <td style="background: #f5f5f5; padding: 10px 10px 0; font: 14px/1.4285714 Arial, sans-serif;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tbody>
+                
+                
+                
+                
+                  
+                     <tr>
+  <td id="main" style="font: 14px/1.4285714 Arial, sans-serif; padding: 0; background-color: #fff; border-radius: 5px">
+    <div style="border: 1px solid #ccc; border-radius: 5px; padding: 20px">
+      <table style="width: 100%; border-collapse: collapse">
+        <tbody>
+          <tr>
+            <td style="font: 14px/1.4285714 Arial, sans-serif; padding: 0">
+              <table style="width: 100%; border-collapse: collapse">
+                <tbody>
+                  <tr>
+                    <td id="avatar" style="font: 14px/1.4285714 Arial, sans-serif; padding: 0; width: 32px; vertical-align: top">
+                      
+                      <img width="32" height="32" alt="sitesbycode" src="https://avatar-cdn.atlassian.com/99f9ce05e9e9762b12c3c9db3bdbb317?s=32&amp;ts=1524844294" style="border-radius: 3px">
+                      
+                    </td>
+                    <td id="content" style="font: 14px/1.4285714 Arial, sans-serif; padding: 0 0 0 10px">
+                      
+  <table style="width: 100%; border-collapse: collapse">
+    <tbody>
+      <tr>
+        <td class="user-action" colspan="2" style="font: 14px/1.4285714 Arial, sans-serif; padding: 0; line-height: 1">
+        <span>
+          
+            <strong>Patrick Hanford</strong> granted you read access to the repository:
+          
+        </span>
+        </td>
+      </tr>
+      <tr>
+        <td class="title" colspan="2" style="font: 14px/1.4285714 Arial, sans-serif; padding: 5px 0 0; font-weight: bold; line-height: 1.2">
+          
+            <a href="https://bitbucket.org/sitesbycode/rt-bot" style="color: #3572b0; text-decoration: none">sitesbycode/rt-bot</a>
+          
+        </td>
+      </tr>
+      <tr><td class="spacer" style="font: 14px/1.4285714 Arial, sans-serif; padding: 10px 0 0"></td></tr>
+    </tbody>
+  </table>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          
+  <tr>
+    <td class="actions" colspan="2" style="font: 14px/1.4285714 Arial, sans-serif; padding: 10px 0 0; border-top: 1px solid #ccc; line-height: 1">
+      
+        <a href="https://bitbucket.org/sitesbycode/rt-bot" style="color: #3572b0; text-decoration: none">View repository</a>
+      
+    </td>
+  </tr>
+
+        </tbody>
+      </table>
+    </div>
+    
+  </td>
+</tr>
+
+                  
+                
+                <tr>
+                  
+
+<td style="padding: 20px 0; color: #707070;">
+  <table style="width: 100%; border-collapse: collapse;">
+    <tbody>
+      <tr>
+        <td style="padding: 0">
+          
+          
+            
+              
+              <a style="color: #3572b0; text-decoration: none;" href="https://bitbucket.org/account/user/ProgrammerR3Z/notifications/">Configure email notifications</a>
+            
+          
+        </td>
+        <td style="padding: 0">
+          
+            
+
+  <img width="1" height="1" src="https://bitbucket.org/account/notifications/mark-read/940932550/a28cf0cf17c65cf0e636e36a23b3abb09b82d9e3/">
+
+
+          
+        </td>
+        <td style="text-align: right; width: 100px; padding: 0">
+          <a href="https://bitbucket.org" style="color: #3572b0; text-decoration: none;">
+            <img width="125" height="18" src="https://d301sr5gafysq2.cloudfront.net/c85f9faf4ec1/img/email/bitbucket-footer.gif" alt="Bitbucket" />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+
+--===============2220039003652409565==--
