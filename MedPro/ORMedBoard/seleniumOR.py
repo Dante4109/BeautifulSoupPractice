@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from dataSet import getLicenseData
 import requests
 import json
+import time
 
 
 def getLicenseDataFromOR():

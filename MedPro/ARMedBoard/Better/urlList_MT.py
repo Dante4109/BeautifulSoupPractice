@@ -2,32 +2,33 @@ from bs4 import BeautifulSoup
 from lxml import etree
 from dataSet import getDataFromXpathDom
 import concurrent.futures
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import requests
 
 urlList = []
-base_url = "http://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=ASMB"
+base_url = "http://www.armedicalboard.org/Public/verify/lookup.aspx?LicNum="
+no_match_url = 'http://www.armedicalboard.org/Public/verify/results.aspx?strPHIDNO=No%20Match'
 requests_session = requests.Session()
 license_type = "PA"
-startRng = 18409
-endRng = 18500
+startRng = 300
+endRng = 1000
 
 start = time.perf_counter()
 
 
 def main():
     # context manager
-    with concurrent.futures.ProcessPoolExecutor(max_workers=60) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=60) as executor:
         ids = range(startRng, endRng+1)
         futures = {executor.submit(
-            checkUrlForLicenseType, id): id for id in ids}
+            getUrlFromRedirect, id): id for id in ids}
         for result in as_completed(futures):
             link = futures.get(result)
             try:
                 data = result.result()
-                if(data is True):
-                    urlList.append(link)
+                if(data):
+                    urlList.append(data)
             except Exception as e:
                 print(e)
             else:
@@ -37,8 +38,8 @@ def main():
 
     requests_session.close()
     finish = time.perf_counter()
-    urlList.sort()
-    print(urlList)
+    sortedUrlList = (sorted(urlList, key=lambda i: i['LicenseID']))
+    print(sortedUrlList)
     print("Total number of matches: " + str(len(urlList)))
     print(f'Finished in {round(finish-start, 2)} second(s)')
     return urlList
@@ -56,6 +57,30 @@ def checkUrlForLicenseType(id):
         return True
     else:
         return False
+
+
+def getUrlFromRedirect(id):
+    try:
+        response = requests_session.get(
+            base_url + license_type + "-" + str(id))
+        if response.history:
+            for resp in response.history:
+                print(resp.status_code, resp.url)
+            print("Final destination:")
+            print(response.status_code, response.url)
+            if(response.url != no_match_url):
+                print('Found License user: ' + license_type + "-" + str(id))
+                licensedUser = {"LicenseID": (
+                    license_type + "-" + str(id)), 'URL': response.url}
+                return licensedUser
+        else:
+            print("Request was not redirected")
+            return None
+    except Exception as e:
+        print(e)
+    else:
+        print('Not Found License user: ' + license_type + str(id))
+        return None
 
 
 if __name__ == '__main__':

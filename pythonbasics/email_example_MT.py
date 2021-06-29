@@ -35,7 +35,6 @@ client.close()
 number_of_chunks = 10
 chunk_size = 10
 
-secs = [1, 2]
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=number_of_chunks) as executor:
     tasks = []

@@ -10,4 +10,4 @@ for data in dataSetList:
     print("-------------")
 
 finish = time.perf_counter()
-print(f'Finished in {round(finish-start, 2)}'
+print(f'Finished in {round(finish-start, 2)}')

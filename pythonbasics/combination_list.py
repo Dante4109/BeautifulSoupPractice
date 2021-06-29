@@ -53,6 +53,7 @@ ids = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13]
 def append_to_list(ids):
     for i in ids:
         print(f'Adding number: {i}')
+        numList.append(i)
     print(f'Completed adding {len(ids)} numbers')
     return i
 
